@@ -1,5 +1,5 @@
-<link href="<?php echo e(asset('css/user/login.css')); ?>" rel="stylesheet" type="text/css">
 <?php echo $__env->make('layouts.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<link href="<?php echo e(asset('css/user/login.css')); ?>" rel="stylesheet" type="text/css">
 
 <div class="row" id="login">
     <div class="col-7 loginMenu">
@@ -130,4 +130,5 @@
 </div>
 
 <?php echo $__env->make('layouts.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-<script type="text/javascript" src="/js/login.js"></script><?php /**PATH /var/www/html/TaxiOut/resources/views/user/login.blade.php ENDPATH**/ ?>
+<script type="text/javascript" src="/js/login.js"></script>
+<?php /**PATH /var/www/html/TaxiOut/resources/views/user/login.blade.php ENDPATH**/ ?>

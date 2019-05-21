@@ -1,6 +1,12 @@
 body{
-    overflow: hidden;
+    overflow-x: hidden;
+    margin:0;
 }
+
+::selection {
+    background: #ffea00;
+}
+
 #login{
     margin-left: -1%;
     background-size:cover;

@@ -1,5 +1,5 @@
-<link href="{{asset('css/user/login.css')}}" rel="stylesheet" type="text/css">
 @include('layouts.header')
+<link href="{{asset('css/user/login.css')}}" rel="stylesheet" type="text/css">
 
 <div class="row" id="login">
     <div class="col-7 loginMenu">

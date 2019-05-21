@@ -1,5 +1,10 @@
 $(document).ready(function () {
     document.title = 'Login - TaxiLotacao';
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
     // Sizing
     var divWidth = $('#login > .loginMenu').width();
     var height = $(window).height();
@@ -59,7 +64,7 @@ $(document).ready(function () {
         let tipoUsu = 'Cliente';
         if($('#rbnTaxista').prop('checked'))
             tipoUsu= 'Taxista';
-        if(Senha != ConfirSenha)
+        if(senha != ConfirSenha)
         {
             $('#modalError .modal-body').html('Senha e repetição de senha não correspondem.');
             $('#modalError .modal-title').html('Login Incorreto');
