@@ -1,0 +1,23 @@
+.modal i{
+    margin-right: 2%;
+}
+
+.mAmber .modal-header{
+    background-color: #ffc107;
+    color:white;
+}
+
+.modal-header button.close{
+    color:white;
+}
+
+.mDanger .modal-header{
+    background-color: #ff4444;
+    color:white;
+}
+
+.mSuccess .modal-header{
+    background-color: #00C851;
+    color: white;
+}
+

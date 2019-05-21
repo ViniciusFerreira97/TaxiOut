@@ -3,7 +3,7 @@
 
 <div class="row" id="login">
     <div class="col-7 loginMenu">
-        <img src="/img/Koala.jpg" id="imgLogin">
+        <img src="/img/taxiOutIndex1.png" id="imgLogin">
     </div>
 
     <div class="col-5 inputs">
@@ -23,14 +23,40 @@
             </div>
             <div class="col-3">
                 <div class="md-form">
-                    <button type="button" class="btn btn-yellow btn-sm">Entrar</button>
+                    <button id="btnLogin" type="button" class="btn btn-yellow btn-sm">Entrar</button>
                 </div>
             </div>
         </div>
     </form>  
     <hr>
 
-    <form id="containerInscrever">
+    <form id="ContainerFormInicial">
+        <div class="row margin2">
+            <div class="col-2"></div>
+            <div class="col">
+                <img src="/img/taxiPng.png" id="miniTaxiInicial">
+            </div>
+        </div>
+        <div class="row margin1">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <h2 class="font-weight-bold">Taxista ou Cliente, venha viajar pelo mundo agora.</h2>
+                <br>
+                <h5 class="font-weight-bold">Faça parte do TaxiOut</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <div class="md-form">
+                    <button type="button" class="btn btn-success btn-lg btn-block" id="btnInscrever">Inscrever-se</button>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+    <form class="to-Hide" id="containerInscrever">
         <div class="row text-center">
             <div class="col">
                 <h1>Increver-se</h1>
@@ -43,12 +69,12 @@
         <div class="row">
             <div class="col-4"></div>
             <div class="custom-control custom-radio custom-control-inline">
-                <input checked type="radio" class="custom-control-input" id="defaultInline1" name="inlineDefaultRadiosExample">
-                <label class="custom-control-label" for="defaultInline1">Taxista</label>
+                <input checked type="radio" class="custom-control-input" id="rbnTaxista" name="inlineDefaultRadiosExample">
+                <label class="custom-control-label" for="rbnTaxista">Taxista</label>
             </div>
             <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" class="custom-control-input" id="defaultInline2" name="inlineDefaultRadiosExample">
-                <label class="custom-control-label" for="defaultInline2">Cliente</label>
+                <input type="radio" class="custom-control-input" id="rbnCliente" name="inlineDefaultRadiosExample">
+                <label class="custom-control-label" for="rbnCliente">Cliente</label>
             </div>
         </div>
         <div class="row">
@@ -92,11 +118,12 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-4"></div>
+            <div class="col-3"></div>
             <div class="col-4">
-                    <div class="md-form">
-                        <button type="button" class="btn btn-yellow btn-sm">Inscrever-se</button>
-                    </div>
+                    <button type="button" id="btnCadastrar" class="btn btn-yellow btn-sm">Inscrever-se</button>
+            </div>
+            <div class="col-3">
+                <button type="button" class="btn btn-deep-orange btn-sm" id="btnVoltar">Voltar</button>
             </div>
         </div>
     </form>

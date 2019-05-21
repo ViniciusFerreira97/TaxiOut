@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Taxi Lotação - Login</title>
+    <link rel="shortcut icon" href="{{asset('img/faviconOficial.png')}}" type="image/x-icon" />
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
           integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -17,6 +18,5 @@
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="http://js.pusher.com/3.1/pusher.min.js"></script>
-    <script type="text/javascript" src="/js/header.js"></script>
 </head>
 <body>

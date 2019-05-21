@@ -12,4 +12,84 @@ $(document).ready(function () {
         $('#imgLogin').css('height', height);
         $('#imgLogin').css('width', (divWidth) + 'px');
     }
+
+    $('#btnVoltar').on('click', function(){
+        $('#containerInscrever').hide();
+        $('#ContainerFormInicial').show('slide');
+    });
+
+    $('#btnInscrever').on('click', function(){
+        $('#ContainerFormInicial').hide();
+        $('#containerInscrever').show('slide');
+    });
+
+    $('#btnLogin').on('click', function () {
+        let email = $('#iptLogin').val();
+        let senha = $('#iptSenha').val();
+        $.ajax({
+            url: "/usuario/login",
+            type: "POST",
+            data: {
+                email: email,
+                senha: senha,
+            },
+            success: function (result) {
+
+                if (!result['success']) {
+                    $('#modalError .modal-body').empty();
+                    let tohtml = '';
+                    for (var i in result['data']) {
+                        tohtml += result['data'][i] + '<br>';
+                    }
+                    $('#modalError .modal-body').html(tohtml);
+                    $('#modalError .modal-title').html('Login Incorreto');
+                    $('#modalError').modal('show');
+                } else {
+                    
+                }
+            }
+        });
+    });
+
+    $('#btnCadastrar').on('click', function(){
+        let email = $('#emailInscrever').val();
+        let nome = $('#nomeInscrever').val();
+        let senha = $('#senhaInscrever').val();
+        let ConfirSenha = $('#confirmSenha').val();
+        let tipoUsu = 'Cliente';
+        if($('#rbnTaxista').prop('checked'))
+            tipoUsu= 'Taxista';
+        if(Senha != ConfirSenha)
+        {
+            $('#modalError .modal-body').html('Senha e repetição de senha não correspondem.');
+            $('#modalError .modal-title').html('Login Incorreto');
+            $('#modalError').modal('show');
+            return;
+        }
+
+        $.ajax({
+            url: "/usuario/cadastrar",
+            type: "POST",
+            data: {
+                email: email,
+                senha: senha,
+                nome: nome,
+                tipoUsu: tipoUsu
+            },
+            success: function (result) {
+                if (!result['success']) {
+                    $('#modalError .modal-body').empty();
+                    let tohtml = '';
+                    for (var i in result['data']) {
+                        tohtml += result['data'][i] + '<br>';
+                    }
+                    $('#modalError .modal-body').html(tohtml);
+                    $('#modalError .modal-title').html('Impossivel Cadastrar');
+                    $('#modalError').modal('show');
+                } else {
+                }
+            }
+        });
+        
+    });
 });
