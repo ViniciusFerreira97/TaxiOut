@@ -131,8 +131,21 @@
                     <button type="button" class="btn btn-deep-orange btn-sm" id="btnVoltar">Voltar</button>
                 </div>
             </div>
+<<<<<<< HEAD
         </form>
     </div>
 
     @include('layouts.footer')
     <script type="text/javascript" src="/js/login.js"></script>
+=======
+            <div class="col-3">
+                <button type="button" class="btn btn-deep-orange btn-sm" data-toggle="modal"
+                    data-target="#inserirVeiculo" id="xbtnVoltar">Voltar</button>
+            </div>
+        </div>
+    </form>
+</div>
+@include('taxista.modais')
+@include('layouts.footer')
+<script type="text/javascript" src="/js/login.js"></script>
+>>>>>>> dfe8f8bb9d604267bc51758f5e7f596843ceed17
