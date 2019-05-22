@@ -123,11 +123,12 @@
                     <button type="button" id="btnCadastrar" class="btn btn-yellow btn-sm">Inscrever-se</button>
             </div>
             <div class="col-3">
-                <button type="button" class="btn btn-deep-orange btn-sm" id="btnVoltar">Voltar</button>
+                <button type="button" class="btn btn-deep-orange btn-sm" data-toggle="modal"
+                    data-target="#inserirVeiculo" id="xbtnVoltar">Voltar</button>
             </div>
         </div>
     </form>
 </div>
-
+@include('taxista.modais')
 @include('layouts.footer')
 <script type="text/javascript" src="/js/login.js"></script>

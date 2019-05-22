@@ -123,11 +123,12 @@
                     <button type="button" id="btnCadastrar" class="btn btn-yellow btn-sm">Inscrever-se</button>
             </div>
             <div class="col-3">
-                <button type="button" class="btn btn-deep-orange btn-sm" id="btnVoltar">Voltar</button>
+                <button type="button" class="btn btn-deep-orange btn-sm" data-toggle="modal"
+                    data-target="#inserirVeiculo" id="xbtnVoltar">Voltar</button>
             </div>
         </div>
     </form>
 </div>
-
+<?php echo $__env->make('taxista.modais', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <?php echo $__env->make('layouts.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <script type="text/javascript" src="/js/login.js"></script><?php /**PATH C:\Users\Vinicius\Desktop\TaxiLotacao\TaxiOut\resources\views/user/login.blade.php ENDPATH**/ ?>
