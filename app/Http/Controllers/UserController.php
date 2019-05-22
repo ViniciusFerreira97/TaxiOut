@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Session;
-use App\usuario;
+use App\usuario as Usuario;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 
@@ -13,7 +13,7 @@ class UserController extends Controller
 {
     public function login(Request $request)
     {
-        $verificaLogin = \App\usuario::where('email','=',$request->email)->where('senha','=',$request->senha);
+        $verificaLogin = Usuario::where('email','=',$request->email)->where('senha','=',$request->senha);
         $return = array();
 
         if($verificaLogin->count() > 0)
@@ -21,9 +21,9 @@ class UserController extends Controller
             $return['success'] = true;
             $return['data'][] = 'Login Efetuado';
             
-            $tipo_usuario = DB::table('usuario')->where('email',$request->email )->pluck('tipo_usuario')->first();
+            $tipo_usuario = Usuario::where('email',$request->email )->pluck('tipo')->first();
             Session::put('tipo_usuario',$tipo_usuario);
-            $id_usuario = DB::table('usuario')->where('email',$request->email )->pluck('id_usuario')->first();
+            $id_usuario = Usuario::where('email',$request->email )->pluck('id_usuario')->first();
             Session::put('id_usuario',$id_usuario);
             return $return;
         }

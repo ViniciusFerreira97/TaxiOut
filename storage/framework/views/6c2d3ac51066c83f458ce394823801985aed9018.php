@@ -7,29 +7,27 @@
     </div>
 
     <div class="col-5 inputs">
-        <div class="row">
-            <form class="hrDiv">
-                <div class="row">
-                    <div class="col-4">
-                        <div class="md-form">
-                            <input type="text" class="form-control" id="iptLogin">
-                            <label for="iptLogin">Login</label>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="md-form">
-                            <input type="password" class="form-control" id="iptSenha">
-                            <label for="iptSenha">Senha</label>
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="md-form">
-                            <button id="btnLogin" type="button" class="btn btn-yellow btn-sm">Entrar</button>
-                        </div>
+        <form class="hrDiv">
+            <div class="row">
+                <div class="col-4">
+                    <div class="md-form">
+                        <input type="text" class="form-control" id="iptLogin">
+                        <label for="iptLogin">Login</label>
                     </div>
                 </div>
-            </form>
-        </div>
+                <div class="col-4">
+                    <div class="md-form">
+                        <input type="password" class="form-control" id="iptSenha">
+                        <label for="iptSenha">Senha</label>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="md-form">
+                        <button id="btnLogin" type="button" class="btn btn-yellow btn-sm">Entrar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
 
         <hr>
         <form id="ContainerFormInicial">
@@ -128,12 +126,13 @@
                     <button type="button" id="btnCadastrar" class="btn btn-yellow btn-sm">Inscrever-se</button>
                 </div>
                 <div class="col-3">
-                    <button type="button" class="btn btn-deep-orange btn-sm" id="btnVoltar">Voltar</button>
+                    <button type="button" class="btn btn-deep-orange btn-sm" id="btnVoltar">Voltar
+                    </button>
                 </div>
             </div>
         </form>
     </div>
-
-    <?php echo $__env->make('layouts.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-    <script type="text/javascript" src="/js/login.js"></script>
+</div>
+<?php echo $__env->make('layouts.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<script type="text/javascript" src="/js/login.js"></script>
 <?php /**PATH /var/www/html/TaxiOut/resources/views/user/login.blade.php ENDPATH**/ ?>

@@ -16,6 +16,7 @@
     <!-- Material Design Bootstrap -->
     <link href="<?php echo e(asset('mdb/css/mdb.lite.min.css')); ?>" rel="stylesheet" type="text/css">
     <link href="<?php echo e(asset('css/modal.css')); ?>" rel="stylesheet" type="text/css">
+    <link href="<?php echo e(asset('css/user/template.css')); ?>" rel="stylesheet" type="text/css">
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="http://js.pusher.com/3.1/pusher.min.js"></script>

@@ -50,7 +50,7 @@ $(document).ready(function () {
                     $('#modalError .modal-title').html('Login Incorreto');
                     $('#modalError').modal('show');
                 } else {
-                    
+                    location.href = '/home';
                 }
             }
         });
@@ -92,6 +92,7 @@ $(document).ready(function () {
                     $('#modalError .modal-title').html('Impossivel Cadastrar');
                     $('#modalError').modal('show');
                 } else {
+                    location.href = '/home';
                 }
             }
         });
