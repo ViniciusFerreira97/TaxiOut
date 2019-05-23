@@ -59,7 +59,7 @@
         <form class="to-Hide" id="containerInscrever">
             <div class="row text-center">
                 <div class="col">
-                    <h1>Increver-se</h1>
+                    <h1>Inscrever-se</h1>
                 </div>
             </div>
             <div class="row">
@@ -123,7 +123,7 @@
             <div class="row">
                 <div class="col-3"></div>
                 <div class="col-4">
-                    <button type="button" id="btnCadastrar" class="btn btn-yellow btn-sm">Inscrever-se</button>
+                    <button type="button" id="btnCadastrar" class="btn btn-yellow btn-sm">Inscrever</button>
                 </div>
                 <div class="col-3">
                     <button type="button" class="btn btn-deep-orange btn-sm" id="btnVoltar">Voltar
