@@ -62,4 +62,3 @@
         </div>
     </div>
 </div>
-<?php /**PATH /var/www/html/TaxiOut/resources/views/taxista/modais.blade.php ENDPATH**/ ?>

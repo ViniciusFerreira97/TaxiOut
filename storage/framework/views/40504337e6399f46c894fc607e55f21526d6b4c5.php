@@ -1,5 +1,5 @@
 <?php echo $__env->make('layouts.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-<nav class="navbar navbar-expand-lg navbar-dark yellow double-nav scrolling-navbar">
+<nav class="mb-1 navbar navbar-expand-lg navbar-dark yellow">
     <a class="navbar-brand" href="#">
         <img src="/img/logotipoAvulso.png" height="30" alt="FactOut Logo">
     </a>
@@ -10,14 +10,14 @@
     <div class="collapse navbar-collapse" id="navContentUser">
         <ul class="navbar-nav ml-auto nav-flex-icons">
             <li class="nav-item">
-                <a class="nav-link waves-effect waves-light">
+                <a class="nav-link waves-effect waves-light" id="btnModalVeiculo">
                     <i class="fas fa-taxi"></i>
                 </a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-user"></i> Perfil
+                    <i class="fas fa-user"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-default"
                      aria-labelledby="navbarDropdownMenuLink-333">
@@ -36,7 +36,8 @@
             <?php echo $__env->make('taxista.nova_viagem', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         </div>
     </div>
-
-
 </main>
+<script type="text/javascript" src="/js/taxista/template.js"></script>
+<?php echo $__env->make('taxista.modaisTaxista', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php echo $__env->make('layouts.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <?php /**PATH /var/www/html/TaxiOut/resources/views/taxista/template.blade.php ENDPATH**/ ?>

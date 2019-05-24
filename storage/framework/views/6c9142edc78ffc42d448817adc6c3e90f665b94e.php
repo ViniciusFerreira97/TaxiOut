@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
-
     <title>Taxi Lotação - Login</title>
     <link rel="shortcut icon" href="<?php echo e(asset('img/faviconOficial.png')); ?>" type="image/x-icon" />
     <!-- Font Awesome -->
@@ -19,8 +18,6 @@
     <link href="<?php echo e(asset('css/user/template.css')); ?>" rel="stylesheet" type="text/css">
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="http://js.pusher.com/3.1/pusher.min.js"></script>
 </head>
-<?php echo $__env->make('user.modais', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <body>
 <?php /**PATH /var/www/html/TaxiOut/resources/views/layouts/header.blade.php ENDPATH**/ ?>

@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>Taxi Lotação - Login</title>
     <link rel="shortcut icon" href="{{asset('img/faviconOficial.png')}}" type="image/x-icon" />
     <!-- Font Awesome -->
@@ -19,7 +18,5 @@
     <link href="{{asset('css/user/template.css')}}" rel="stylesheet" type="text/css">
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="http://js.pusher.com/3.1/pusher.min.js"></script>
 </head>
-@include('user.modais')
 <body>
