@@ -17,13 +17,12 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-user"></i>
+                    <i class="fas fa-user"></i> <span id="spanNomeUsuario"></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-default"
                      aria-labelledby="navbarDropdownMenuLink-333">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item" href="#">Alterar Dados</a>
+                    <a class="dropdown-item" href="#">Sair</a>
                 </div>
             </li>
         </ul>
@@ -38,6 +37,7 @@
     </div>
 </main>
 <script type="text/javascript" src="/js/taxista/template.js"></script>
+<script type="text/javascript" src="/js/usuario.js"></script>
 <?php echo $__env->make('taxista.modaisTaxista', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <?php echo $__env->make('layouts.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <?php /**PATH /var/www/html/TaxiOut/resources/views/taxista/template.blade.php ENDPATH**/ ?>

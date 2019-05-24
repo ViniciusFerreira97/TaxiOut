@@ -56,7 +56,8 @@ $(document).ready(function () {
                     $('#modalError').modal('show');
                 } else {
                     $('#modalSuccess .modal-body').html('Dados alterados/salvos com sucesso !');
-                    $('#modalError .modal-title').html('Alterar dados do veiculo');
+                    $('#modalSuccess .modal-title').html('Alterar dados do veiculo');
+                    $('#modalSuccess').modal('show');
                 }
             }
         });

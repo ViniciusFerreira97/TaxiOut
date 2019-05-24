@@ -67,4 +67,15 @@ class UserController extends Controller
             return $return;
         }
     }
+
+    public function getNome(){
+        $user = Usuario::find(Session::get('id_usuario'));
+        if(!isset($user) || $user == ''){
+            $return['success'] = false;
+            return $return;
+        }
+        $return['success'] = true;
+        $return['data'] = $user->nome;
+        return $return;
+    }
 }

@@ -20,6 +20,7 @@ Route::get('/home', function(){
 
 Route::post('/usuario/login','UserController@login');
 Route::post('/usuario/cadastrar','UserController@CadastrarUsuario');
+Route::get('/usuario/getNome','UserController@getNome');
 
 
 Route::post('/motorista/alterarVeiculo','MotoristaController@alterarVeiculo');

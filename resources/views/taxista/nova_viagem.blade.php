@@ -1,6 +1,6 @@
-<div class="row">
+<div class="row top-more-3">
     <div class="col-4"></div>
-    <div class="col top-more-4">
+    <div class="col">
         <h2>Agendamento de viagem</h2>
     </div>
 </div>
