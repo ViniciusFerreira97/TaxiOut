@@ -1,5 +1,5 @@
 body{
-    overflow-x: hidden;
+    overflow: hidden;
     margin:0;
 }
 
@@ -29,6 +29,10 @@ body{
 .margin1{
     margin-top: 5%;
 }
-.margin2{
-    margin-top: 20%;
+#ContainerFormInicial{
+    padding-top: 30%;
+    height: 100%;
+    width: 100%;
+    background-image: url("/img/bgIndex.png");
+    background-size:cover;
 }

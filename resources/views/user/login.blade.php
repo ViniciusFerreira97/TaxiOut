@@ -7,7 +7,7 @@
     </div>
 
     <div class="col-5 inputs">
-        <form class="hrDiv">
+        <form>
             <div class="row">
                 <div class="col-4">
                     <div class="md-form">
@@ -28,10 +28,9 @@
                 </div>
             </div>
         </form>
-
         <hr>
         <form id="ContainerFormInicial">
-            <div class="row margin2">
+            <div class="row">
                 <div class="col-2"></div>
                 <div class="col">
                     <img src="/img/taxiPng.png" id="miniTaxiInicial">

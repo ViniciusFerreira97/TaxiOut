@@ -76,7 +76,6 @@ $(document).ready(function () {
                 if (status == google.maps.GeocoderStatus.OK) {
                     latlong = String(results[0].geometry.location).replace('(','').replace(')','');
                     latOrigem = latlong.split(',')[0];
-                    alert(latOrigem);
                     longOrigem = latlong.split(',')[1];
                     map.setCenter(results[0].geometry.location);
                     var markerOrigem = new google.maps.Marker({

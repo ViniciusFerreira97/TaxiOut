@@ -262,3 +262,12 @@
 #61 /var/www/html/TaxiOut/server.php(21): require_once('/var/www/html/T...')
 #62 {main}
 "} 
+[2019-05-25 16:47:39] local.ERROR: Command "sreve" is not defined. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"sreve\" is not defined. at /var/www/html/TaxiOut/vendor/symfony/console/Application.php:639)
+[stacktrace]
+#0 /var/www/html/TaxiOut/vendor/symfony/console/Application.php(233): Symfony\\Component\\Console\\Application->find('sreve')
+#1 /var/www/html/TaxiOut/vendor/symfony/console/Application.php(145): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 /var/www/html/TaxiOut/vendor/laravel/framework/src/Illuminate/Console/Application.php(90): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 /var/www/html/TaxiOut/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(133): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /var/www/html/TaxiOut/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
