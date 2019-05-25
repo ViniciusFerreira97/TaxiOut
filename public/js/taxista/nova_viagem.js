@@ -8,4 +8,19 @@ $(document).ready(function () {
         });
     }
     initMap();
+
+    $('#controlCamposInicial').on('click',function () {
+        $('#camposPontoFinal').hide('slide');
+        $('#camposPontoInicial').toggle('slide');
+        $('#iControlInicial').toggleClass('yellow-text').toggleClass('fa-angle-right').toggleClass('fa-angle-down');
+        $('#iControlFinal').removeClass('yellow-text').addClass('fa-angle-right').removeClass('fa-angle-down');
+    });
+
+
+    $('#controlCamposFinal').on('click',function () {
+        $('#camposPontoInicial').hide('slide');
+        $('#camposPontoFinal').toggle('slide');
+        $('#iControlFinal').toggleClass('yellow-text').toggleClass('fa-angle-right').toggleClass('fa-angle-down');
+        $('#iControlInicial').removeClass('yellow-text').addClass('fa-angle-right').removeClass('fa-angle-down');
+    });
 });
