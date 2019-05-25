@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    document.title = 'Home - TaxiOut';
     $('.toHide').hide();
     $.ajaxSetup({
         headers: {

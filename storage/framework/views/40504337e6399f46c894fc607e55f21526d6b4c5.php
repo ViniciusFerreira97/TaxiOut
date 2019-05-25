@@ -1,4 +1,7 @@
 <?php echo $__env->make('layouts.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<link href="/TimePicker/mdtimepicker.css" rel="stylesheet">
+<script src="/mask/src/jquery.mask.js"></script>
+
 <nav class="mb-1 navbar navbar-expand-lg navbar-dark yellow">
     <a class="navbar-brand" href="#">
         <img src="/img/logotipoAvulso.png" height="30" alt="FactOut Logo">
@@ -36,6 +39,7 @@
         </div>
     </div>
 </main>
+<script src="/TimePicker/mdtimepicker.js"></script>
 <script type="text/javascript" src="/js/taxista/template.js"></script>
 <script type="text/javascript" src="/js/usuario.js"></script>
 <?php echo $__env->make('taxista.modaisTaxista', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>

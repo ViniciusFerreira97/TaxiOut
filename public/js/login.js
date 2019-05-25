@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    document.title = 'Login - TaxiLotacao';
+    document.title = 'Login - TaxiOut';
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

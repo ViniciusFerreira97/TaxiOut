@@ -25,3 +25,4 @@ Route::get('/usuario/getNome','UserController@getNome');
 
 Route::post('/motorista/alterarVeiculo','MotoristaController@alterarVeiculo');
 Route::get('/motorista/getVeiculoDados','MotoristaController@getVeiculoDados');
+Route::post('/motorista/cadastrarViagem','MotoristaController@cadastrarViagem');

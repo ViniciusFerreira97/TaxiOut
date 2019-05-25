@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\veiculo as veiculo;
+use App\viagem as viagem;
+use App\ponto_rota as pontoRota;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 use Session;
@@ -58,6 +60,30 @@ class MotoristaController extends Controller
         $return['data']['modelo'] = $veiculo->modelo;
         $return['data']['cor'] = $veiculo->cor;
         $return['data']['marca'] = $veiculo->marca;
+        return $return;
+    }
+
+    public function cadastrarViagem(Request $request){
+        $viagem = new viagem();
+        $viagem->tarifa = $request->preco;
+        $viagem->capacidade = $request->capacidade;
+        $viagem->hora = $request->hora;
+        $viagem->data = $request->data;
+        $viagem->id_motorista = Session::get('id_usuario');
+        $viagem->save();
+
+        /*$sequencia = 1;
+        foreach ($request->latlongs as $ll){
+            $ponto = new pontoRota();
+            $ponto->id_viagem = $viagem->id_viagem;
+            $ponto->sequencia = $sequencia;
+            $ponto->latitude = $ll['latitude'];
+            $ponto->longitude = $ll['longitude'];
+            $ponto->save();
+            $sequencia++;
+        }*/
+
+        $return['success'] = true;
         return $return;
     }
 }
