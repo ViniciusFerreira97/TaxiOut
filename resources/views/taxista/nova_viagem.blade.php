@@ -188,4 +188,3 @@
 </div>
 
 <script type="text/javascript" src="/js/taxista/nova_viagem.js"></script>
-<!-- AIzaSyCqw6U1Puw1OUsO0ezJs0F2GNFRaX7eb9k -->
