@@ -167,7 +167,7 @@
             </div>
             <div class="col-6">
                 <div class="md-form">
-                    <input type="text" readonly id="dataCriarViagem" class="form-control">
+                    <input type="text" id="dataCriarViagem" class="form-control">
                     <label for="dataCriarViagem"> <i class="far fa-calendar-alt"></i> Data de saída</label>
                 </div>
             </div>

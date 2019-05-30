@@ -24,6 +24,9 @@ class UserController extends Controller
             $tipo_usuario = Usuario::where('email',$request->email )->pluck('tipo')->first();
             Session::put('tipo_usuario',$tipo_usuario);
             $id_usuario = Usuario::where('email',$request->email )->pluck('id_usuario')->first();
+            $user = Usuario::find($id_usuario);
+            $user->ultimo_login = date('d-m-Y');
+            $user->save();
             Session::put('id_usuario',$id_usuario);
             return $return;
         }

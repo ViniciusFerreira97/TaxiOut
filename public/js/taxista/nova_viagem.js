@@ -14,8 +14,10 @@ $(document).ready(function () {
             theme: 'green',
             format: 'hh:mm tt',
         });
+        $('#horarioCriarViagem').focus();
         $('#cepInicial').mask("00000-000");
         $('#cepFinal').mask("00000-000");
+        $('#dataCriarViagem').mask("00/00/0000");
         initMap();
     }
 
@@ -106,14 +108,13 @@ $(document).ready(function () {
             });
 
         $.ajax({
-            url: "/motorista/cadastrarViagem",
+            url: "/motoristas/viagens",
             type: "POST",
             data: {
                 preco: preco,
                 capacidade: capacidade,
                 hora: horario,
                 data: data,
-                latlongs: latlongs
             },
             success: function (result) {
                 console.log(result);return;

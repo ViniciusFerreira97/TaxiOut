@@ -76,3 +76,7 @@ hr.especial{
 .menuItems{
     color:grey;
 }
+
+.toHide{
+    display: none;
+}

@@ -1,5 +1,6 @@
 $(document).ready(function () {
     document.title = 'Home - TaxiOut';
+    var veiculoCriado = false;
     $('.toHide').hide();
     $.ajaxSetup({
         headers: {
@@ -12,12 +13,14 @@ $(document).ready(function () {
 
     $('#inserirVeiculo').on('shown.bs.modal', function(){
         $.ajax({
-            url: "/motorista/getVeiculoDados",
+            url: "/motoristas/veiculos",
             type: "GET",
             success: function (result) {
                 if (!result['success']) {
                     return;
                 } else {
+                    if(result['data']['marca'] != '')
+                        veiculoCriado = false;
                     $('#marcaVeiculo').focus();
                     $('#marcaVeiculo').val(result['data']['marca']);
                     $('#modeloVeiculo').focus();
@@ -37,9 +40,12 @@ $(document).ready(function () {
         let modelo = $('#modeloVeiculo').val();
         let placa = $('#placaVeiculo').val();
         let cor = $('#corVeiculo').val();
+        var type = "POST";
+        if(!veiculoCriado)
+            type = "PUT";
         $.ajax({
-            url: "/motorista/alterarVeiculo",
-            type: "POST",
+            url: "/motoristas/veiculos",
+            type: type,
             data: {
                 marca: marca,
                 modelo: modelo,
@@ -57,6 +63,7 @@ $(document).ready(function () {
                     $('#modalError .modal-title').html('Alterar dados do veiculo');
                     $('#modalError').modal('show');
                 } else {
+                    veiculoCriado = true;
                     $('#modalSuccess .modal-body').html('Dados alterados/salvos com sucesso !');
                     $('#modalSuccess .modal-title').html('Alterar dados do veiculo');
                     $('#modalSuccess').modal('show');

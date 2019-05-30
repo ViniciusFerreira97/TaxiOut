@@ -13,6 +13,7 @@ class usuario extends Model
         'nome',
         'email',
         'senha',
-        'tipo'
+        'tipo',
+        'ultimo_login'
     ];
 }

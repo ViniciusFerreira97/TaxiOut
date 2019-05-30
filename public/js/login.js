@@ -32,8 +32,8 @@ $(document).ready(function () {
         let email = $('#iptLogin').val();
         let senha = $('#iptSenha').val();
         $.ajax({
-            url: "/usuario/login",
-            type: "POST",
+            url: "/usuarios/login",
+            type: "PUT",
             data: {
                 email: email,
                 senha: senha,
@@ -73,7 +73,7 @@ $(document).ready(function () {
         }
 
         $.ajax({
-            url: "/usuario/cadastrar",
+            url: "/usuarios",
             type: "POST",
             data: {
                 email: email,

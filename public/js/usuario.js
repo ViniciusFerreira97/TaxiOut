@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $.ajax({
-        url: "/usuario/getNome",
+        url: "/usuarios",
         type: "GET",
         success: function (result) {
 

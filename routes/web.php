@@ -18,11 +18,15 @@ Route::get('/home', function(){
    return view(strtolower(Session::get('tipo_usuario').'.template'));
 });
 
-Route::post('/usuario/login','UserController@login');
-Route::post('/usuario/cadastrar','UserController@CadastrarUsuario');
-Route::get('/usuario/getNome','UserController@getNome');
+Route::put('/usuarios/login','UserController@login');
+Route::post('/usuarios','UserController@CadastrarUsuario');
+Route::get('/usuarios','UserController@getNome');
 
 
-Route::post('/motorista/alterarVeiculo','MotoristaController@alterarVeiculo');
-Route::get('/motorista/getVeiculoDados','MotoristaController@getVeiculoDados');
-Route::post('/motorista/cadastrarViagem','MotoristaController@cadastrarViagem');
+Route::post('/motoristas/veiculos','MotoristaController@alterarVeiculo');
+Route::put('/motoristas/veiculos','MotoristaController@alterarVeiculo');
+Route::get('/motoristas/veiculos','MotoristaController@getVeiculoDados');
+Route::post('/motoristas/viagens','MotoristaController@cadastrarViagem');
+
+
+Route::get('/viagens','ViagemController@getViagens');
