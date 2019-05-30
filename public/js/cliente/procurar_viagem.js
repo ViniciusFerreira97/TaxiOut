@@ -1,5 +1,4 @@
 $(document).ready(function () {
-    initializeProcurarViagem();
     function initializeProcurarViagem(){
         $.ajax({
             url: "/viagens",

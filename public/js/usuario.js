@@ -17,4 +17,13 @@ $(document).ready(function () {
             $('#modalSuccess').modal('hide');
         }, 1000);
     });
+
+    $(".iconClick").on('click', function (e) {
+        e.preventDefault();
+        let id = $(this).attr('id') + 'View';
+        $('section.view').not('#' + id).hide('slide');
+        $(".iconClick i").removeClass('active');
+        $('#'+ $(this).attr('id') +' i').addClass('active');
+        $('#' + id).show('slide');
+    });
 });

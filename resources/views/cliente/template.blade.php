@@ -13,12 +13,12 @@
     <div class="collapse navbar-collapse" id="navContentUser">
         <ul class="navbar-nav ml-auto nav-flex-icons">
             <li class="nav-item">
-                <a class="nav-link waves-effect waves-light">
-                    <i class="fas fa-search"></i>
+                <a href="#" class="nav-link waves-effect waves-light iconClick" id="procurarViagem">
+                    <i class="fas fa-search active"></i>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link waves-effect waves-light">
+                <a href="#" class="nav-link waves-effect waves-light iconClick" id="estatisticas">
                     <i class="fas fa-chart-line"></i>
                 </a>
             </li>
@@ -41,9 +41,11 @@
         <div class="col-1"></div>
         <div class="col-10">
             @include('cliente.procurar_viagem')
+            @include('cliente.estatisticas')
         </div>
     </div>
 </main>
 <script src="/TimePicker/mdtimepicker.js"></script>
 <script type="text/javascript" src="/js/usuario.js"></script>
+@include('cliente.modaisCliente')
 @include('layouts.footer')
