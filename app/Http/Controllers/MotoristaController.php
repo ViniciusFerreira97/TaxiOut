@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\veiculo as veiculo;
 use App\viagem as viagem;
 use App\ponto_rota as pontoRota;
+use App\nome_ponto as nomePonto;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 use Session;
@@ -72,16 +73,40 @@ class MotoristaController extends Controller
         $viagem->id_motorista = Session::get('id_usuario');
         $viagem->save();
 
-        /*$sequencia = 1;
-        foreach ($request->latlongs as $ll){
-            $ponto = new pontoRota();
-            $ponto->id_viagem = $viagem->id_viagem;
-            $ponto->sequencia = $sequencia;
-            $ponto->latitude = $ll['latitude'];
-            $ponto->longitude = $ll['longitude'];
-            $ponto->save();
+        $coords = json_decode($request->coords);
+        $sequencia = 1;
+        foreach ($coords as $c){
+            $pontoRota = new pontoRota();
+            $pontoRota->latitude = $c->lat;
+            $pontoRota->longitude = $c->long;
+            $pontoRota->sequencia = $sequencia;
+            $pontoRota->id_viagem = $viagem->id_viagem;
+            $pontoRota->save();
             $sequencia++;
-        }*/
+        }
+        $pontoRota = new pontoRota();
+        $id = $pontoRota->where('id_viagem',$viagem->id_viagem)->where('sequencia',1)->pluck('id_ponto_rota')->first();
+        $nomePonto = new nomePonto();
+        $nomePonto->id_ponto_rota = $id;
+        $nomePonto->logradouro = $request->origemLogradouro;
+        $nomePonto->bairro = $request->origemBairro;
+        $nomePonto->numero = $request->origemNumero;
+        $nomePonto->cep = $request->origemCep;
+        $nomePonto->cidade = $request->origemCidade;
+        $nomePonto->estado = $request->origemUf;
+        $nomePonto->tipo_ponto = 'Inicial';
+        $nomePonto->save();
+        $nomePonto = new nomePonto();
+        $id = $pontoRota->where('id_viagem',$viagem->id_viagem)->where('sequencia',$sequencia-1)->pluck('id_ponto_rota')->first();
+        $nomePonto->id_ponto_rota = $id;
+        $nomePonto->logradouro = $request->destinoLogradouro;
+        $nomePonto->bairro = $request->destinoBairro;
+        $nomePonto->numero = $request->destinoNumero;
+        $nomePonto->cep = $request->destinoCep;
+        $nomePonto->cidade = $request->destinoCidade;
+        $nomePonto->estado = $request->destinoUf;
+        $nomePonto->tipo_ponto = 'Final';
+        $nomePonto->save();
 
         $return['success'] = true;
         return $return;

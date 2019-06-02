@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
+    public function sair(){
+
+    }
+
     public function login(Request $request)
     {
         $verificaLogin = Usuario::where('email','=',$request->email)->where('senha','=',$request->senha);

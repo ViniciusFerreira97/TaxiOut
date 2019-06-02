@@ -128,7 +128,7 @@
                 </div>
                 <div class="col-4">
                     <div class="md-form">
-                        <select class="mdb-select form-control">
+                        <select class="mdb-select form-control" id="ufFinal">
                             <option value="" disabled>UF</option>
                             <option value="MG">MG</option>
                         </select>
@@ -141,43 +141,52 @@
                 </div>
             </div>
         </section>
-
-        <div class="row">
-            <div class="col">
-                <div class="md-form">
-                    <input type="number" value="4.5" id="precoCriarViagem" class="form-control">
-                    <label for="precoCriarViagem"> <i class="fas fa-money-bill-wave"></i> Preço da viagem (R$)</label>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <div class="md-form">
-                    <input type="number" value="4" id="capacidadeCriarViagem" class="form-control">
-                    <label for="capacidadeCriarViagem"> <i class="fas fa-users"></i> Capacidade de passageiros para a viagem</label>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-6">
-                <div class="md-form">
-                    <input type="text" value="08:00" id="horarioCriarViagem" class="form-control">
-                    <label for="horarioCriarViagem"> <i class="far fa-clock"></i> Horário de saída</label>
-                </div>
-            </div>
-            <div class="col-6">
-                <div class="md-form">
-                    <input type="text" id="dataCriarViagem" class="form-control">
-                    <label for="dataCriarViagem"> <i class="far fa-calendar-alt"></i> Data de saída</label>
-                </div>
-            </div>
-        </div>
         <div class="row">
             <div class="col-5"></div>
-            <div class="col">
-                <button type="button" class="btn btn-success" id="btnAgendarViagem">Agendar viagem</button>
+            <div class="col-7">
+                <button type="button" class="btn btn-sm btn-success" id="btnEncontrarEnderecos">Procurar Endereços</button>
             </div>
         </div>
+        <section class="viagemMenu toHide">
+            <div class="row">
+                <div class="col">
+                    <div class="md-form">
+                        <input type="number" value="4.5" id="precoCriarViagem" class="form-control">
+                        <label for="precoCriarViagem"> <i class="fas fa-money-bill-wave"></i> Preço da viagem
+                            (R$)</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="md-form">
+                        <input type="number" value="4" id="capacidadeCriarViagem" class="form-control">
+                        <label for="capacidadeCriarViagem"> <i class="fas fa-users"></i> Capacidade de passageiros para
+                            a viagem</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="md-form">
+                        <input type="text" value="08:00" id="horarioCriarViagem" class="form-control">
+                        <label for="horarioCriarViagem"> <i class="far fa-clock"></i> Horário de saída</label>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="md-form">
+                        <input type="text" id="dataCriarViagem" class="form-control">
+                        <label for="dataCriarViagem"> <i class="far fa-calendar-alt"></i> Data de saída</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-5"></div>
+                <div class="col">
+                    <button type="button" class="btn btn-success" id="btnAgendarViagem">Agendar viagem</button>
+                </div>
+            </div>
+        </section>
     </div>
     <div class="col-1"></div>
     <div class="col">

@@ -1,0 +1,6 @@
+.scrollTable {
+    position: relative;
+    height: 300px;
+    overflow: auto;
+    display: block;
+}

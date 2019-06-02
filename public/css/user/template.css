@@ -13,6 +13,9 @@
 .top-more-5{
     margin-top: 5%;
 }
+.top-more-10{
+    margin-top: 8%;
+}
 
 .top-less-1{
     margin-top: -1%;
@@ -64,7 +67,7 @@
 
 body{
     overflow-x:hidden;
-    padding-bottom: 5%;
+    padding-bottom: 6%;
 }
 
 hr.especial{
@@ -79,4 +82,7 @@ hr.especial{
 
 .toHide{
     display: none;
+}
+.active{
+    color:#e0e0e0;
 }

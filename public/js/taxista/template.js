@@ -71,4 +71,14 @@ $(document).ready(function () {
             }
         });
     });
+
+    $('#btnSair').on('click',function(){
+        $.ajax({
+            url: "/usuarios/sair",
+            type: 'GET',
+            success: function () {
+                location.href = '/';
+            }
+        });
+    });
 });

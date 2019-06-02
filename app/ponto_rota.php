@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ponto_rota extends Model
 {
-    protected $table = 'Ponto_rota';
+    protected $table = 'Ponto_Rota';
     protected $primaryKey = 'id_ponto_rota';
 
     protected $fillable = [

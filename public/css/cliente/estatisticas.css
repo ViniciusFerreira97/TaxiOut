@@ -1,0 +1,15 @@
+nav{
+    background-color: #00C851;
+}
+#tableRealizadas thead{
+    background-color: #eeeeee;
+}
+.modal-content .modal-header{
+    background-color: #2e7d32;
+}
+.modal-content .modal-header h4{
+    color: white;
+}
+#mapaEstatisticas{
+    width: 400px;
+}

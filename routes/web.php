@@ -19,6 +19,9 @@ Route::get('/home', function(){
 });
 
 Route::put('/usuarios/login','UserController@login');
+Route::get('/usuarios/sair',function(){
+    \Illuminate\Support\Facades\Session::flush();
+});
 Route::post('/usuarios','UserController@CadastrarUsuario');
 Route::get('/usuarios','UserController@getNome');
 
