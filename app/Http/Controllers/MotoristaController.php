@@ -95,6 +95,7 @@ class MotoristaController extends Controller
         $nomePonto->cidade = $request->origemCidade;
         $nomePonto->estado = $request->origemUf;
         $nomePonto->tipo_ponto = 'Inicial';
+        $nomePonto->id_viagem = $viagem->id_viagem;
         $nomePonto->save();
         $nomePonto = new nomePonto();
         $id = $pontoRota->where('id_viagem',$viagem->id_viagem)->where('sequencia',$sequencia-1)->pluck('id_ponto_rota')->first();
@@ -106,6 +107,7 @@ class MotoristaController extends Controller
         $nomePonto->cidade = $request->destinoCidade;
         $nomePonto->estado = $request->destinoUf;
         $nomePonto->tipo_ponto = 'Final';
+        $nomePonto->id_viagem = $viagem->id_viagem;
         $nomePonto->save();
 
         $return['success'] = true;

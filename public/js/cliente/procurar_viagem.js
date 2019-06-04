@@ -1,4 +1,13 @@
 $(document).ready(function () {
+    var latpath = [];
+    var lineColor = "#ffae00";
+    var opacity = .8;
+    var lineWeight = 2;
+    var fillColor = "#f5ff00";
+    var lineShape = [];
+    var polygonShape = [];
+    var bounds = new google.maps.LatLngBounds();
+
     initializeProcurarViagem();
     function initializeProcurarViagem(){
         $.ajax({
@@ -35,7 +44,7 @@ $(document).ready(function () {
                         $('#tarifaViagem').html($(this).find('td:eq(5)').html());
                         $('#dataViagem').html($(this).find('td:eq(2)').html());
                         initMap();
-                        getRotaDaViagem();
+                        getRotaDaViagem(val);
                         $('#modalVerViagens').modal('show');
                     });
                 }
@@ -48,10 +57,67 @@ $(document).ready(function () {
             url: "/rotas?idViagem="+idViagem,
             type: "GET",
             success: function (result) {
-                console.log(result);return;
-
+                let tamanho = result['data'].length-1;
+                latpath[0] = [];
+                for(var i = 0; i < result['data'].length; i++){
+                    latpath[0].push(new google.maps.LatLng(result['data'][i]['lat'], result['data'][i]['long']))
+                    if(i == 0){
+                        map.setCenter(latpath[0][0]);
+                        var markerOrigem = new google.maps.Marker({
+                            map: map,
+                            position: latpath[0][0],
+                            icon: '/img/marcadorOrigemAlternativo.png',
+                            title: 'Ponto de saida',
+                            animation: google.maps.Animation.DROP,
+                        });
+                    }
+                    else if(i== tamanho){
+                        map.setCenter(latpath[0][i]);
+                        var markerDestino = new google.maps.Marker({
+                            map: map,
+                            position: latpath[0][i],
+                            icon: '/img/marcadorDestino.png',
+                            title: 'Ponto de chegada',
+                            animation: google.maps.Animation.DROP,
+                        });
+                    }
+                }
+                var markers = [];
+                markers.push(markerDestino);
+                markers.push(markerOrigem);
+                for (var i = 0; i < markers.length; i++) {
+                    bounds.extend(markers[i].getPosition());
+                }
+                map.fitBounds(bounds);
+                addOverlayFromKML();
             }
         });
+    }
+
+    function addOverlayFromKML() {
+        for (var i = 0; i < 1; i++) {
+            lineShape[i] = new google.maps.Polyline({
+                path: latpath[i],
+                strokeColor: lineColor,
+                strokeOpacity: opacity,
+                strokeWeight: lineWeight
+            });
+            lineShape[i].setMap(map);
+            polygonShape[i] = new google.maps.Polygon({
+                path: latpath[i],
+                strokeColor: lineColor,
+                strokeOpacity: opacity,
+                strokeWeight: lineWeight,
+                fillColor: fillColor
+            });
+            google.maps.event.addListener(polygonShape[i], 'click', function (point) {
+                infowindow.setContent(description[cur]);
+                infowindow.setPosition(point.latLng);
+                infowindow.open(map);
+            });
+        }
+        polyShape = lineShape[0];
+        latpath = [];
     }
 
     function montaEndereco(logradouro,numero,bairro,cep,cidade,estado){
@@ -98,7 +164,7 @@ $(document).ready(function () {
     });
 
     function initMap() {
-        $('#mapaEstatisticas').css('min-height', $(window).height() /2.5);
+        $('#mapaEstatisticas').css('min-height', $(window).height() /2);
         map = new google.maps.Map(document.getElementById('mapaEstatisticas'), {
             center: {lat: -19.9189954, lng: -43.9386306},
             zoom: 14

@@ -386,7 +386,6 @@ $(document).ready(function () {
         let capacidade = $('#capacidadeCriarViagem').val();
         let horario = $('#horarioCriarViagem').val();
         let data = $('#dataCriarViagem').val();
-
         $.ajax({
             url: "/motoristas/viagens",
             type: "POST",

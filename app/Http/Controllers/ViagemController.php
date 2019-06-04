@@ -45,8 +45,7 @@ class ViagemController extends Controller
 
     public function getRotaViagem(Request $request){
         $pr = new ponto_rota();
-        $pr->where('id_viagem','=',$request->query('idViagem'));
-        $pontos = $pr->get();
+        $pontos = $pr->where('id_viagem','=',$request->query('idViagem'))->orderBy('sequencia')->get();
         $result['data'] = [];
         $cont = 0;
         foreach ($pontos as $p){
