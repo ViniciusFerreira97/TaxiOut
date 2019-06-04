@@ -13,8 +13,13 @@
     <div class="collapse navbar-collapse" id="navContentUser">
         <ul class="navbar-nav ml-auto nav-flex-icons">
             <li class="nav-item">
-                <a class="nav-link waves-effect waves-light" id="btnModalVeiculo">
-                    <i class="fas fa-taxi"></i>
+                <a class="nav-link waves-effect waves-light iconClick" id="novaViagem">
+                    <i class="fas fa-taxi active"></i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link waves-effect waves-light iconClick" id="confirmarViagem">
+                    <i class="far fa-calendar-check"></i>
                 </a>
             </li>
             <li class="nav-item dropdown">
@@ -36,6 +41,7 @@
         <div class="col-1"></div>
         <div class="col-10">
             @include('taxista.nova_viagem')
+            @include('taxista.confirmar_viagem')
         </div>
     </div>
 </main>

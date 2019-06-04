@@ -17,7 +17,7 @@ $(document).ready(function () {
                 } else {
                     toTable = '';
                     for(var i = 0; i < result['data'].length; i++){
-                        toTable += '<tr> <td scope="row">'+i+'</td>';
+                        toTable += '<tr value="'+result['data'][i]['id']+'"> <td scope="row">'+i+'</td>';
                         toTable += ' <td class="nome">'+result['data'][i]['nome']+'</td>';
                         toTable += '<td>'+result['data'][i]['hora']+' '+result['data'][i]['data']+'</td>';
                         toTable += ' <td>'+montaEndereco(result['data'][i]['OrigemLogradouro'],result['data'][i]['OrigemNumero'],result['data'][i]['OrigemBairro'],result['data'][i]['OrigemCep'],result['data'][i]['OrigemCidade'],result['data'][i]['OrigemUf'])+'</td>';
@@ -26,6 +26,17 @@ $(document).ready(function () {
                         toTable += '</tr>';
                     }
                     $('#tableViagens tbody').html(toTable);
+                    $("#tableViagens tbody tr").on('click', function(){
+                        let val = $(this).attr('value');
+                        $('#confirmarViagem').show();
+                        $('#modalVerViagens .modal-title').html('Confirmar Viagem');
+                        $('#ruaPartidaViagem').html($(this).find('td:eq(3)').html());
+                        $('#ruaDestinoViagem').html($(this).find('td:eq(4)').html());
+                        $('#tarifaViagem').html($(this).find('td:eq(5)').html());
+                        $('#dataViagem').html($(this).find('td:eq(2)').html());
+                        initMap();
+                        $('#modalVerViagens').modal('show');
+                    });
                 }
             }
         });
@@ -73,4 +84,12 @@ $(document).ready(function () {
             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
     });
+
+    function initMap() {
+        $('#mapaEstatisticas').css('min-height', $(window).height() /2.5);
+        map = new google.maps.Map(document.getElementById('mapaEstatisticas'), {
+            center: {lat: -19.9189954, lng: -43.9386306},
+            zoom: 14
+        });
+    }
 });

@@ -45,6 +45,7 @@ $(document).ready(function () {
 }
 
   $('#tableRealizadas tr').on('click', function(){
+    $('#confirmarViagem').hide();
     $('#modalVerViagens').modal('show');
     initMap();
   });
