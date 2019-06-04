@@ -35,9 +35,21 @@ $(document).ready(function () {
                         $('#tarifaViagem').html($(this).find('td:eq(5)').html());
                         $('#dataViagem').html($(this).find('td:eq(2)').html());
                         initMap();
+                        getRotaDaViagem();
                         $('#modalVerViagens').modal('show');
                     });
                 }
+            }
+        });
+    }
+
+    function getRotaDaViagem(idViagem){
+        $.ajax({
+            url: "/rotas?idViagem="+idViagem,
+            type: "GET",
+            success: function (result) {
+                console.log(result);return;
+
             }
         });
     }

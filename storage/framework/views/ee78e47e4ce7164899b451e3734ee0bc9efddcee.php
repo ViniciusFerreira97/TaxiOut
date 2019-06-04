@@ -16,28 +16,36 @@
             <div class="col-5">
                 <div class="row top-more-1">
                     <div class="col-1"></div>
-                    <label id="ruaPartidaViagem">Endereço Partida:</label>
+                    <div class="col">
+                      <label>Endereço Partida: <span id="ruaPartidaViagem" class="text-muted"></span></label>
+                    </div>
                 </div>
                 <div class="row top-more-10">
                 <div class="col-1"></div>
-                    <label id="ruaDestinoViagem">Endereço Destino:</label>
+                <div class="col">
+                    <label>Endereço Destino: <span id="ruaDestinoViagem" class="text-muted"></span></label>
+                </div>
                 </div>
                 <div class="row top-more-10">
                 <div class="col-1"></div>
-                    <label id="tarifaViagem">Tarifa:</label>
+                <div class="col">
+                    <label>Tarifa: <span id="tarifaViagem" class="text-muted"></span></label>
+                </div>
                 </div>
                 <div class="row top-more-10">
                 <div class="col-1"></div>
-                    <label id="dataViagem">Data Viagem:</label>
+                <div class="col">
+                    <label>Data Viagem: <span id="dataViagem" class="text-muted"></span></label>
+                </div>
                 </div>
             </div>
             <div class="col-1"></div>
             <div class="col-5" id="mapaEstatisticas">
-
             </div>
         </div>
       </div>
       <div class="modal-footer">
+        <button type="button" class="btn btn-success btn-sm" id="confirmarViagem">Confirmar</button>
         <button type="button" class="btn btn-outline-warning btn-sm" data-dismiss="modal">Fechar</button>
       </div>
     </div>

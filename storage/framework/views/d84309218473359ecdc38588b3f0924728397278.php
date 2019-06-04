@@ -47,3 +47,4 @@
     </div>
 </section>
 
+<?php /**PATH /var/www/html/TaxiOut/resources/views/taxista/confirmar_viagem.blade.php ENDPATH**/ ?>

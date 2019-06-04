@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\viagem;
+use App\ponto_rota;
 use App\nome_ponto;
 use DB;
 
@@ -40,5 +41,20 @@ class ViagemController extends Controller
             $cont++;
         }
         return $return;
+    }
+
+    public function getRotaViagem(Request $request){
+        $pr = new ponto_rota();
+        $pr->where('id_viagem','=',$request->query('idViagem'));
+        $pontos = $pr->get();
+        $result['data'] = [];
+        $cont = 0;
+        foreach ($pontos as $p){
+            $result['data'][$cont]['lat'] = $p->latitude;
+            $result['data'][$cont]['long'] = $p->longitude;
+            $cont++;
+        }
+
+        return $result;
     }
 }
