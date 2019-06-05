@@ -198,7 +198,7 @@ $(document).ready(function () {
             }
             polyPoints = polyShape.getPath();
             var kmlstringtobesaved = newpos.lng().toFixed(6) + ',' + newpos.lat().toFixed(6);
-            pointsArrayKml.splice(i + 1, 0, kmlstringtobesaved);
+            pointsArrayKml.splice(i, 0, kmlstringtobesaved);
         });
         return marker;
     }
