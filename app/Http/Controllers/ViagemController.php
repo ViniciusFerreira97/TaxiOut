@@ -11,9 +11,16 @@ use Illuminate\Http\Request;
 class ViagemController extends Controller
 {
     public function getViagens(Request $request){
-        $viagens = DB::table('Viagem as v')
-            ->join('Usuario as u','u.id_usuario','=','v.id_motorista')
-            ->get();
+        $filtro = $request->query('finalizadas');
+        if(isset($filtro) && $filtro)
+            $viagens = DB::table('Viagem as v')
+                ->join('Usuario as u','u.id_usuario','=','v.id_motorista')
+                ->where('v.status','=',1)
+                ->get();
+        else
+            $viagens = DB::table('Viagem as v')
+                ->join('Usuario as u','u.id_usuario','=','v.id_motorista')
+                ->get();
         $return['success'] = true;
         $cont = 0;
         foreach ($viagens as $viagem){

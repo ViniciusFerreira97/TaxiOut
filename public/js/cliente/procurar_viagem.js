@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    var map;
     var latpath = [];
     var lineColor = "#ffae00";
     var opacity = .8;
@@ -26,7 +27,7 @@ $(document).ready(function () {
                 } else {
                     toTable = '';
                     for(var i = 0; i < result['data'].length; i++){
-                        toTable += '<tr value="'+result['data'][i]['id']+'"> <td scope="row">'+i+'</td>';
+                        toTable += '<tr value="'+result['data'][i]['id']+'"> <td scope="row">'+(i+1)+'</td>';
                         toTable += ' <td class="nome">'+result['data'][i]['nome']+'</td>';
                         toTable += '<td>'+result['data'][i]['hora']+' '+result['data'][i]['data']+'</td>';
                         toTable += ' <td>'+montaEndereco(result['data'][i]['OrigemLogradouro'],result['data'][i]['OrigemNumero'],result['data'][i]['OrigemBairro'],result['data'][i]['OrigemCep'],result['data'][i]['OrigemCidade'],result['data'][i]['OrigemUf'])+'</td>';
@@ -167,7 +168,7 @@ $(document).ready(function () {
         $('#mapaEstatisticas').css('min-height', $(window).height() /2);
         map = new google.maps.Map(document.getElementById('mapaEstatisticas'), {
             center: {lat: -19.9189954, lng: -43.9386306},
-            zoom: 14
+            zoom: 5
         });
     }
 });
