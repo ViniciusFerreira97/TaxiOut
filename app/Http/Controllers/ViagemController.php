@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\viagem;
 use App\ponto_rota;
 use App\nome_ponto;
+use App\usuario_viagem;
 use DB;
 
 use Illuminate\Http\Request;
@@ -61,6 +62,36 @@ class ViagemController extends Controller
             $cont++;
         }
 
+        return $result;
+    }
+    public function getUsuariosViagem(Request $request)
+    {
+        $usu = new usuario_viagem();
+        $usuarios = $usu->where('id_viagem','=',$request->query('idViagem'))->join('usuario as u', 'id_passageiro', '=', 'u.id_usuario')->get();
+        $result['data'] = [];
+        $cont = 0;
+        foreach ($usuarios as $u){
+            $result['data'][$cont]['id'] = $u->id_usuario;
+            $result['data'][$cont]['nome'] = $u->nome;
+            $cont++;
+        }
+        return $result;
+    }
+
+    public function salvarPassageiros(Request $request)
+    {
+        $result['resposta'] = true;
+        if(!isset($request->passageiros))
+        {
+            $result['resposta'] = false;
+            return $result;
+        }
+        for($i=0; $i< count($request->passageiros); $i++)
+        {
+            $usu = usuario_viagem::where('id_passageiro', '=', $request->passageiros[$i])->find($request->id_viagem);
+            $usu->presenca = '1';
+            $usu->save();
+        }
         return $result;
     }
 }
