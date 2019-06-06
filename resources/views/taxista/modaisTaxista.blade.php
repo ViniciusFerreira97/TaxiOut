@@ -109,7 +109,7 @@
                         <label>Selecionar Clientes Presentes:</label>
                     </div>
                 </div>
-                <div class="row top-more-1">
+                <div class="row top-more-1 divCheck">
                     <div class="col-1"></div>
                     <div class="col">
                         <div id="rbtCliente1" class="custom-control custom-checkbox toHide">
@@ -118,7 +118,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row top-more-1">
+                <div class="row top-more-1 divCheck">
                     <div class="col-1"></div>
                     <div class="col">
                         <div id="rbtCliente2" class="custom-control custom-checkbox toHide">
@@ -127,7 +127,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row top-more-1">
+                <div class="row top-more-1 divCheck">
                     <div class="col-1"></div>
                     <div class="col">
                         <div id="rbtCliente3" class="custom-control custom-checkbox toHide">
@@ -136,7 +136,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row top-more-1">
+                <div class="row top-more-1 divCheck">
                     <div class="col-1"></div>
                     <div class="col">
                         <div id="rbtCliente4" class="custom-control custom-checkbox toHide">
@@ -145,7 +145,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row top-more-1">
+                <div class="row top-more-1 divCheck">
                     <div class="col-1"></div>
                     <div class="col">
                         <div id="rbtCliente5" class="custom-control custom-checkbox toHide">
@@ -154,7 +154,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row top-more-1">
+                <div class="row top-more-1 divCheck">
                     <div class="col-1"></div>
                     <div class="col">
                         <div id="rbtCliente6" class="custom-control custom-checkbox toHide">

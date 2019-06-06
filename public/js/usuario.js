@@ -17,6 +17,11 @@ $(document).ready(function () {
             $('#modalSuccess').modal('hide');
         }, 1000);
     });
+    $('#modalError').on('shown.bs.modal', function(){
+        setTimeout(function(){
+            $('#modalError').modal('hide');
+        }, 1000);
+    });
 
     $(".iconClick").on('click', function (e) {
         e.preventDefault();

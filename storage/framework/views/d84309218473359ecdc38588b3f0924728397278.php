@@ -1,3 +1,4 @@
+<link href="/css/taxista/confirmar_viagem.css" rel="stylesheet">
 <section class="view toHide" id="confirmarViagemView">
     <div class="row top-more-2">
         <div class="col-4"></div>
@@ -47,4 +48,5 @@
     </div>
 </section>
 
+<script type="text/javascript" src="/js/taxista/confirmar_viagem.js"></script>
 <?php /**PATH /var/www/html/TaxiOut/resources/views/taxista/confirmar_viagem.blade.php ENDPATH**/ ?>

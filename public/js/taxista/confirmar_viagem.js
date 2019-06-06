@@ -50,6 +50,10 @@ $(document).ready(function () {
             url: "/passageiros?idViagem="+idViagem,
             type: "GET",
             success: function (result) {
+                $('.divCheck input').prop('checked',false);
+                for(i = 1; i < 7; i++){
+                    $('#'+('rbtCliente'+(i))).hide();
+                }
                 for(var count=0; count < result['data'].length; count++)
                 {
                     let aux = result['data'][count]['id'] + ' - ' + result['data'][count]['nome'];
@@ -84,6 +88,7 @@ $(document).ready(function () {
                     $('#modalConfirmarViagem').modal('hide');
                     $('#modalSuccess .modal-body').html('Viagem iniciada com sucesso !');
                     $('#modalSuccess').modal('show');
+                    initializeConfirmarViagem();
                 }
                 else{
                     $('#modalError .modal-body').html('Selecionar os passageiros da viagem');

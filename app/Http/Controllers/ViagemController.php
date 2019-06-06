@@ -113,7 +113,9 @@ class ViagemController extends Controller
     public function getUsuariosViagem(Request $request)
     {
         $usu = new usuario_viagem();
-        $usuarios = $usu->where('id_viagem','=',$request->query('idViagem'))->join('usuario as u', 'id_passageiro', '=', 'u.id_usuario')->get();
+        $usuarios = $usu->where('id_viagem','=',$request->query('idViagem'))
+            ->join('Usuario as u', 'id_passageiro', '=', 'u.id_usuario')
+            ->get();
         $result['data'] = [];
         $cont = 0;
         foreach ($usuarios as $u){
@@ -134,10 +136,15 @@ class ViagemController extends Controller
         }
         for($i=0; $i< count($request->passageiros); $i++)
         {
-            $usu = usuario_viagem::where('id_passageiro', '=', $request->passageiros[$i])->find($request->id_viagem);
+            $usu = usuario_viagem::where('id_passageiro', '=', $request->passageiros[$i])
+                ->where('id_viagem','=',$request->id_viagem)->select('id_usuario_viagem')->first();
+            $usu = usuario_viagem::find($usu->id_usuario_viagem);
             $usu->presenca = '1';
             $usu->save();
         }
+        $viagem = viagem::find($request->id_viagem);
+        $viagem->status = 1;
+        $viagem->save();
         return $result;
     }
 }
