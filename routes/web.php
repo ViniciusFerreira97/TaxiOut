@@ -31,6 +31,8 @@ Route::get('/motoristas/veiculos','MotoristaController@getVeiculoDados');
 Route::post('/motoristas/viagens','MotoristaController@cadastrarViagem');
 
 Route::get('/rotas','ViagemController@getRotaViagem');
+Route::get('/passageiros','ViagemController@getUsuariosViagem');
+Route::post('/passageiros','ViagemController@salvarPassageiros');
 
 Route::get('/viagens','ViagemController@getViagens');
 
