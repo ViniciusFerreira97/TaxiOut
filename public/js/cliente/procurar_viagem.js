@@ -26,8 +26,13 @@ $(document).ready(function () {
                     $('#modalError').modal('show');
                 } else {
                     toTable = '';
+                    let icon = '';
                     for(var i = 0; i < result['data'].length; i++){
-                        toTable += '<tr value="'+result['data'][i]['id']+'"> <td scope="row">'+(i+1)+'</td>';
+                        if(result['data'][i]['Reservado'])
+                            icon = '<i class="fas fa-clipboard-check text-success"></i>';
+                        else
+                            icon = '<i class="far fa-clipboard text-primary"></i>';
+                        toTable += '<tr value="'+result['data'][i]['id']+'"> <td scope="row">'+icon+'</td>';
                         toTable += ' <td class="nome">'+result['data'][i]['nome']+'</td>';
                         toTable += '<td>'+result['data'][i]['hora']+' '+result['data'][i]['data']+'</td>';
                         toTable += ' <td>'+montaEndereco(result['data'][i]['OrigemLogradouro'],result['data'][i]['OrigemNumero'],result['data'][i]['OrigemBairro'],result['data'][i]['OrigemCep'],result['data'][i]['OrigemCidade'],result['data'][i]['OrigemUf'])+'</td>';
@@ -38,12 +43,19 @@ $(document).ready(function () {
                     $('#tableViagens tbody').html(toTable);
                     $("#tableViagens tbody tr").on('click', function(){
                         let val = $(this).attr('value');
-                        $('#confirmarViagem').show();
+                        if($(this).find('td:eq(0)').html() == '<i class="fas fa-clipboard-check text-success"></i>'){
+                            $('#cancelarReserva').show();
+                            $('#confirmarViagem').hide();
+                        }else{
+                            $('#cancelarReserva').hide();
+                            $('#confirmarViagem').show();
+                        }
                         $('#modalVerViagens .modal-title').html('Confirmar Viagem');
                         $('#ruaPartidaViagem').html($(this).find('td:eq(3)').html());
                         $('#ruaDestinoViagem').html($(this).find('td:eq(4)').html());
                         $('#tarifaViagem').html($(this).find('td:eq(5)').html());
                         $('#dataViagem').html($(this).find('td:eq(2)').html());
+                        $('#idViagemModalConfirmar').html(val);
                         initMap();
                         getRotaDaViagem(val);
                         $('#modalVerViagens').modal('show');
@@ -83,6 +95,7 @@ $(document).ready(function () {
                         });
                     }
                 }
+                addOverlayFromKML();
                 var markers = [];
                 markers.push(markerDestino);
                 markers.push(markerOrigem);
@@ -90,7 +103,6 @@ $(document).ready(function () {
                     bounds.extend(markers[i].getPosition());
                 }
                 map.fitBounds(bounds);
-                addOverlayFromKML();
             }
         });
     }
@@ -171,4 +183,40 @@ $(document).ready(function () {
             zoom: 5
         });
     }
+
+    $('#confirmarViagem').on('click',function(){
+        let idViagem = $('#idViagemModalConfirmar').html();
+        $.ajax({
+            url: "/reservas",
+            type: "POST",
+            data: {
+                idViagem: idViagem,
+            },
+            success: function (result) {
+                console.log(result);
+                $('#modalVerViagens').modal('hide');
+                $('#modalSuccess .modal-body').html('Reserva realizada com sucesso !');
+                $('#modalSuccess').modal('show');
+                initializeProcurarViagem();
+            }
+        });
+    });
+    
+    $('#cancelarReserva').on('click',function () {
+        let idViagem = $('#idViagemModalConfirmar').html();
+        $.ajax({
+            url: "/reservas?idViagem="+idViagem,
+            type: "DELETE",
+            data: {
+                idViagem: idViagem,
+            },
+            success: function (result) {
+                console.log(result);
+                $('#modalVerViagens').modal('hide');
+                $('#modalSuccess .modal-body').html('Reserva cancelada com sucesso !');
+                $('#modalSuccess').modal('show');
+                initializeProcurarViagem();
+            }
+        });
+    });
 });

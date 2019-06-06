@@ -67,7 +67,7 @@ class UserController extends Controller
             $usuario->save();
 
             $return['success'] = true;
-            return $return;
+            return self::login($request);
         }else{
             $return['success'] = false;
             $return['data'][] = 'Email já em uso.';

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 use App\viagem;
 use App\ponto_rota;
 use App\nome_ponto;
+use App\usuario_viagem;
+use Session;
+use Carbon\Carbon;
 use DB;
 
 use Illuminate\Http\Request;
@@ -11,19 +14,31 @@ use Illuminate\Http\Request;
 class ViagemController extends Controller
 {
     public function getViagens(Request $request){
+        $query = DB::table('Viagem as v')
+            ->join('Usuario as u','u.id_usuario','=','v.id_motorista');
         $filtro = $request->query('finalizadas');
-        if(isset($filtro) && $filtro)
-            $viagens = DB::table('Viagem as v')
-                ->join('Usuario as u','u.id_usuario','=','v.id_motorista')
-                ->where('v.status','=',1)
-                ->get();
+        $user = $request->query('user');
+        $mes = $request->query('mes');
+        if(isset($filtro))
+            $query->where('v.status','=',1);
         else
-            $viagens = DB::table('Viagem as v')
-                ->join('Usuario as u','u.id_usuario','=','v.id_motorista')
-                ->get();
+            $query->where('v.status','=',0);
+        if(isset($user)){
+            $query->join('Usuario_Viagem as uv','uv.id_viagem','=','v.id_viagem')
+                ->where('uv.id_passageiro','=',Session::get('id_usuario'))
+                ->where('uv.presenca','=',1);
+        }
+        $backup = clone $query;
+        $viagens = $query->get();
         $return['success'] = true;
+        $return['data'] = [];
         $cont = 0;
         foreach ($viagens as $viagem){
+            if(isset($mes)){
+                $data = new Carbon($viagem->data);
+                if($data < Carbon::now()->subMonth(6))
+                    continue;
+            }
             $return['data'][$cont]['id'] = $viagem->id_viagem;
             $return['data'][$cont]['tarifa'] = $viagem->tarifa;
             $return['data'][$cont]['nome'] = $viagem->nome;
@@ -45,6 +60,17 @@ class ViagemController extends Controller
             $return['data'][$cont]['FinalCep'] = isset($final->cep) ? $final->cep : '';
             $return['data'][$cont]['FinalCidade'] = isset($final->cidade) ? $final->cidade : '';
             $return['data'][$cont]['FinalUf'] = isset($final->estado) ? $final->estado : '';
+            if(!isset($user)){
+                $verificador = clone $backup;
+                $verificador->where('uvm.id_passageiro','=',Session::get('id_usuario'))
+                    ->where('v.id_viagem','=',$viagem->id_viagem)
+                    ->join('Usuario_Viagem as uvm','uvm.id_viagem','=','v.id_viagem');
+                if($verificador->count() > 0)
+                    $return['data'][$cont]['Reservado'] = true;
+                else
+                    $return['data'][$cont]['Reservado'] = false;
+            }
+
             $cont++;
         }
         return $return;
@@ -60,7 +86,28 @@ class ViagemController extends Controller
             $result['data'][$cont]['long'] = $p->longitude;
             $cont++;
         }
-
         return $result;
+    }
+
+    public function reservarEmViagem(Request $request){
+        $uv = usuario_viagem::where('id_passageiro','=',Session::get('id_usuario'))
+            ->where('id_viagem','=',$request->idViagem);
+        if($uv->count() < 1){
+            $uv = new usuario_viagem();
+            $uv->id_viagem = $request->idViagem;
+            $uv->id_passageiro = Session::get('id_usuario');
+            $uv->save();
+        }
+        $retorno['success'] = true;
+        return $retorno;
+    }
+
+    public function deletarEmViagem(Request $request){
+        $idViagem = $request->query("idViagem");
+        DB::table('Usuario_Viagem')->where('id_viagem','=',$idViagem)
+            ->where('id_passageiro','=',Session::get('id_usuario'))
+            ->delete();
+        $retorno['success'] = true;
+        return $retorno;
     }
 }

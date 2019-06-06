@@ -1,5 +1,5 @@
 <!-- Modal Ver Viagem -->
-<div class="modal fade" id="modalVerViagens" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+<div class="modal " id="modalVerViagens" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
 
@@ -38,6 +38,7 @@
                     <label>Data Viagem: <span id="dataViagem" class="text-muted"></span></label>
                 </div>
                 </div>
+                <span id="idViagemModalConfirmar" class="toHide"></span>
             </div>
             <div class="col-1"></div>
             <div class="col-5" id="mapaEstatisticas">
@@ -45,6 +46,7 @@
         </div>
       </div>
       <div class="modal-footer">
+          <button type="button" class="btn btn-danger btn-sm" id="cancelarReserva">Cancelar Reserva</button>
         <button type="button" class="btn btn-success btn-sm" id="confirmarViagem">Confirmar</button>
         <button type="button" class="btn btn-outline-warning btn-sm" data-dismiss="modal">Fechar</button>
       </div>
