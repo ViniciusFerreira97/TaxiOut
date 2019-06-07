@@ -14,6 +14,7 @@ $(document).ready(function () {
     var latpath = [];
     var markers = [];
     var firstLats = [];
+    var limitCount = 0;
     var bounds = new google.maps.LatLngBounds();
     var infowindow = new google.maps.InfoWindow();
     var tmpPolyLine = new google.maps.Polyline({
@@ -50,11 +51,11 @@ $(document).ready(function () {
                 strokeWeight: lineWeight,
                 fillColor: fillColor
             });
-            google.maps.event.addListener(polygonShape[i], 'click', function (point) {
+            /*google.maps.event.addListener(polygonShape[i], 'click', function (point) {
                 infowindow.setContent(description[cur]);
                 infowindow.setPosition(point.latLng);
                 infowindow.open(map);
-            });
+            });*/
         }
         polyShape = lineShape[0];
         latpath = [];
@@ -77,7 +78,6 @@ $(document).ready(function () {
     }
 
     function drawandlog() {
-        if(polyPoints.length > 2)
         for (var i = 0; i < polyPoints.length; i++) {
             var marker = setmarkers(polyPoints.getAt(i));
             markers.push(marker);
@@ -92,6 +92,15 @@ $(document).ready(function () {
     }
 
     function setmarkers(point) {
+        if(limitCount < 2){
+            var marker = new google.maps.Marker({
+                position: point,
+                map: map,
+                icon: imageNormal,
+            });
+            limitCount++;
+            return marker;
+        }
         var marker = new google.maps.Marker({
             position: point,
             map: map,
@@ -99,7 +108,7 @@ $(document).ready(function () {
             raiseOnDrag: false,
             draggable: true
         });
-        google.maps.event.addListener(marker, "drag", function () {
+        google.maps.event.addListener(marker, "drag", function() {
             for (var i = 0; i < markers.length; i++) {
                 if (markers[i] == marker) {
                     prevpoint = marker.getPosition();
@@ -111,7 +120,7 @@ $(document).ready(function () {
             }
             polyPoints = polyShape.getPath();
             var kmlstringtobesaved = marker.getPosition().lng().toFixed(6) + ',' + marker.getPosition().lat().toFixed(6);
-            pointsArrayKml.splice(i, 1, kmlstringtobesaved);
+            pointsArrayKml.splice(i-1,1,kmlstringtobesaved);
         });
         google.maps.event.addListener(marker, "click", function () {
             for (var i = 0; i < markers.length; i++) {
@@ -198,7 +207,7 @@ $(document).ready(function () {
             }
             polyPoints = polyShape.getPath();
             var kmlstringtobesaved = newpos.lng().toFixed(6) + ',' + newpos.lat().toFixed(6);
-            pointsArrayKml.splice(i, 0, kmlstringtobesaved);
+            pointsArrayKml.splice(i, 1, kmlstringtobesaved);
         });
         return marker;
     }
@@ -269,6 +278,7 @@ $(document).ready(function () {
             center: {lat: -19.9189954, lng: -43.9386306},
             zoom: 14
         });
+        tmpPolyLine.setMap(map);
     }
 
     $('#controlCamposInicial').on('click', function () {
