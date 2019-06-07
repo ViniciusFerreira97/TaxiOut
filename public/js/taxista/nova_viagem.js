@@ -122,7 +122,7 @@ $(document).ready(function () {
             var kmlstringtobesaved = marker.getPosition().lng().toFixed(6) + ',' + marker.getPosition().lat().toFixed(6);
             pointsArrayKml.splice(i-1,1,kmlstringtobesaved);
         });
-        google.maps.event.addListener(marker, "click", function () {
+        google.maps.event.addListener(marker, "click", function() {
             for (var i = 0; i < markers.length; i++) {
                 if (markers[i] == marker && markers.length != 1) {
                     prevpoint = marker.getPosition();
@@ -135,9 +135,11 @@ $(document).ready(function () {
                 }
             }
             polyPoints = polyShape.getPath();
-            if (markers.length > 0) {
-                pointsArrayKml.splice(i, 1);
+            console.log(pointsArrayKml);
+            if(markers.length > 0) {
+                pointsArrayKml.splice(i-1,1);
             }
+            console.log(pointsArrayKml);
         });
         return marker;
     }
