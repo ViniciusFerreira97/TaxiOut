@@ -23,11 +23,16 @@ class ViagemController extends Controller
             $query->where('v.status','=',1);
         else
             $query->where('v.status','=',0);
-        if(isset($user)){
+        if(isset($user) && Session::get('tipo_usuario') == 'Taxista'){
+            $query->where('v.id_motorista','=',Session::get('id_usuario'))
+                ->where('v.status','=',1);
+        }
+        elseif(isset($user)){
             $query->join('Usuario_Viagem as uv','uv.id_viagem','=','v.id_viagem')
                 ->where('uv.id_passageiro','=',Session::get('id_usuario'))
                 ->where('uv.presenca','=',1);
         }
+
         $backup = clone $query;
         $viagens = $query->get();
         $return['success'] = true;
@@ -60,7 +65,7 @@ class ViagemController extends Controller
             $return['data'][$cont]['FinalCep'] = isset($final->cep) ? $final->cep : '';
             $return['data'][$cont]['FinalCidade'] = isset($final->cidade) ? $final->cidade : '';
             $return['data'][$cont]['FinalUf'] = isset($final->estado) ? $final->estado : '';
-            if(!isset($user)){
+            if(!isset($user) && Session::get('tipo_usuario') == 'Cliente'){
                 $verificador = clone $backup;
                 $verificador->where('uvm.id_passageiro','=',Session::get('id_usuario'))
                     ->where('v.id_viagem','=',$viagem->id_viagem)

@@ -30,7 +30,6 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-default"
                      aria-labelledby="navbarDropdownMenuLink-333">
-                    <a class="dropdown-item" href="#">Alterar Dados</a>
                     <a class="dropdown-item" href="#" id="btnSair">Sair</a>
                 </div>
             </li>

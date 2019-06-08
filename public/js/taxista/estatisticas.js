@@ -1,6 +1,6 @@
 $(document).ready(function () {
-
-    $('#estatisticas').on('click',function () {
+ 
+    $('#estatisticasTax').on('click',function () {
         $.ajax({
             url: "/viagens?user=true&mes=true&finalizadas=true",
             type: "GET",
@@ -26,7 +26,7 @@ $(document).ready(function () {
                         toTable += ' <td>'+result['data'][i]['tarifa']+'</td>';
                         toTable += '</tr>';
                     }
-                    $('#tableRealizadas tbody').html(toTable);
+                    $('#tableRealizadasTax tbody').html(toTable);
                     let mesesTraduzidos = [];
                     for(var i = 0; i < meses.length; i++){
                         mesesTraduzidos[i] = traduzMes(meses[i]);
