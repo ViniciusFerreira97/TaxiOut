@@ -15,7 +15,6 @@ $(document).ready(function () {
             url: "/viagens",
             type: "GET",
             success: function (result) {
-                console.log(result); return;
                 if (!result['success']) {
                     $('#modalError .modal-body').empty();
                     let tohtml = '';
