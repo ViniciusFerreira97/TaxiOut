@@ -18,6 +18,7 @@
     <link href="{{asset('css/user/template.css')}}" rel="stylesheet" type="text/css">
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="/js/facebook.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqw6U1Puw1OUsO0ezJs0F2GNFRaX7eb9k"
             async defer></script>
 </head>
