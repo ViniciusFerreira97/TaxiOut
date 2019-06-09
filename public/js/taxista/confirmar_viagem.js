@@ -8,9 +8,10 @@ $(document).ready(function () {
     var lineShape = [];
     var polygonShape = [];
     var bounds = new google.maps.LatLngBounds();
-
-    initializeConfirmarViagem();
     var valClick;
+    $('#confirmarViagem').on('click',function () {
+        initializeConfirmarViagem();
+    })
     function initializeConfirmarViagem() {
         $.ajax({
             url: "/viagens",
