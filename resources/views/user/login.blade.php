@@ -1,4 +1,5 @@
 @include('layouts.header')
+<meta name="google-site-verification" content="cGuR1sDmtt_NPoRw89WZh7H8Ag65aU-EPmWqCOTN4r4" />
 <link href="{{asset('css/user/login.css')}}" rel="stylesheet" type="text/css">
 
 <div class="row" id="login">
