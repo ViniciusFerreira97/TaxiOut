@@ -120,7 +120,7 @@ $(document).ready(function () {
             }
             polyPoints = polyShape.getPath();
             var kmlstringtobesaved = marker.getPosition().lng().toFixed(6) + ',' + marker.getPosition().lat().toFixed(6);
-            pointsArrayKml.splice(i-1,1,kmlstringtobesaved);
+            pointsArrayKml.splice(i,1,kmlstringtobesaved);
         });
         google.maps.event.addListener(marker, "click", function() {
             for (var i = 0; i < markers.length; i++) {
@@ -135,9 +135,8 @@ $(document).ready(function () {
                 }
             }
             polyPoints = polyShape.getPath();
-            console.log(pointsArrayKml);
             if(markers.length > 0) {
-                pointsArrayKml.splice(i-1,1);
+                pointsArrayKml.splice(i,1);
             }
             console.log(pointsArrayKml);
         });
@@ -209,7 +208,7 @@ $(document).ready(function () {
             }
             polyPoints = polyShape.getPath();
             var kmlstringtobesaved = newpos.lng().toFixed(6) + ',' + newpos.lat().toFixed(6);
-            pointsArrayKml.splice(i, 1, kmlstringtobesaved);
+            pointsArrayKml.splice(i+1, 0, kmlstringtobesaved);
         });
         return marker;
     }

@@ -3,7 +3,7 @@
 
 <div class="row" id="login">
     <div class="col-7 loginMenu">
-        <img src="/img/taxiOutIndex1.png" id="imgLogin">
+        <img src="img/taxiOutIndex1.png" id="imgLogin">
     </div>
 
     <div class="col-5 inputs">
@@ -33,7 +33,7 @@
             <div class="row">
                 <div class="col-2"></div>
                 <div class="col">
-                    <img src="/img/taxiPng.png" id="miniTaxiInicial">
+                    <img src="img/taxiPng.png" id="miniTaxiInicial">
                 </div>
             </div>
             <div class="row margin1">
@@ -133,5 +133,5 @@
     </div>
 </div>
 <?php echo $__env->make('layouts.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-<script type="text/javascript" src="/js/login.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
 <?php /**PATH /var/www/html/TaxiOut/resources/views/user/login.blade.php ENDPATH**/ ?>
