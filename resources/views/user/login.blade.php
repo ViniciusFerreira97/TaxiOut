@@ -58,7 +58,7 @@
                 <div class="row">
                     <div class="col-2"></div>
                     <div class="col-8">
-                        <a href="{{ url('facebook') }}" class="btn btn-lg btn-primary btn-block">
+                        <a href="{{ url('auth/facebook') }}" class="btn btn-lg btn-primary btn-block">
                             <strong>Login With Facebook</strong>
                         </a>
                     </div>
