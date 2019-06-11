@@ -1,4 +1,5 @@
 <?php echo $__env->make('layouts.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<meta name="google-site-verification" content="cGuR1sDmtt_NPoRw89WZh7H8Ag65aU-EPmWqCOTN4r4" />
 <link href="<?php echo e(asset('css/user/login.css')); ?>" rel="stylesheet" type="text/css">
 
 <div class="row" id="login">
@@ -36,7 +37,7 @@
                     <img src="img/taxiPng.png" id="miniTaxiInicial">
                 </div>
             </div>
-            <div class="row margin1">
+            <div class="row">
                 <div class="col-2"></div>
                 <div class="col-8">
                     <h2 class="font-weight-bold">Taxista ou Cliente, venha viajar pelo mundo agora.</h2>
@@ -50,6 +51,16 @@
                     <div class="md-form">
                         <button type="button" class="btn btn-success btn-lg btn-block" id="btnInscrever">Inscrever-se
                         </button>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-8">
+                        <a href="<?php echo e(url('facebook')); ?>" class="btn btn-lg btn-primary btn-block">
+                            <strong>Login With Facebook</strong>
+                        </a>
                     </div>
                 </div>
             </div>
