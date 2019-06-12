@@ -144,4 +144,4 @@
     </div>
 </div>
 @include('layouts.footer')
-<script type="text/javascript" src="js/login.js"></script>
+<!--<script type="text/javascript" src="js/login.js"></script>-->
