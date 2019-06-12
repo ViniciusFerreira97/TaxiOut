@@ -58,8 +58,8 @@
                 <div class="row">
                     <div class="col-2"></div>
                     <div class="col-8">
-                        <a href="{{ url('auth/facebook') }}" class="btn btn-lg btn-primary btn-block">
-                            <strong>Login With Facebook</strong>
+                        <a href="{{ url('/google') }}" class="btn btn-lg btn-danger btn-block">
+                            <strong>Entrar com o Google</strong>
                         </a>
                     </div>
                 </div>

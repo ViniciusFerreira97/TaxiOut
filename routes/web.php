@@ -40,8 +40,5 @@ Route::get('/viagens','ViagemController@getViagens');
 Route::post('/reservas','ViagemController@reservarEmViagem');
 Route::delete('/reservas','ViagemController@deletarEmViagem');
 
-Route::get('facebook', function () {
-    return view('facebook');
-});
-Route::get('auth/facebook', 'FacebookController@redirectToFacebook');
-Route::get('auth/facebook/callback', 'FacebookController@handleFacebookCallback');
+Route::get('/google', 'GoogleController@redirectToProvider');
+Route::get('/callback', 'GoogleController@handleProviderCallback');
