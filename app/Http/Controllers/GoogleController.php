@@ -20,7 +20,8 @@ class GoogleController extends Controller
         try {
             $user = Socialite::driver('google')->user();
         } catch (\Exception $e) {
-            return redirect('/login');
+            return view('user.login');
+            //return redirect('/home');
         }
         // check if they're an existing user
         $existingUser = usuario::where('email', $user->email)->first();

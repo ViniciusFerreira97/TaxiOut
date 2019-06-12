@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('user.login');
-});
+});*/
 Route::get('/home', function(){
    return view(strtolower(Session::get('tipo_usuario').'.template'));
 });
@@ -41,4 +41,4 @@ Route::post('/reservas','ViagemController@reservarEmViagem');
 Route::delete('/reservas','ViagemController@deletarEmViagem');
 
 Route::get('/google', 'GoogleController@redirectToProvider');
-Route::get('/callback', 'GoogleController@handleProviderCallback');
+Route::get('/', 'GoogleController@handleProviderCallback');
