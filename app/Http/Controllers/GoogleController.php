@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\usuario;
 use Socialite;
+use App\Http\Controllers\UserController;
 
 class GoogleController extends Controller
 {
@@ -25,20 +26,21 @@ class GoogleController extends Controller
         }
         // check if they're an existing user
         $existingUser = usuario::where('email', $user->email)->first();
-        if($existingUser){
-            // log them in
-            auth()->login($existingUser, true);
-        } else {
+        if(!$existingUser){
             // create a new user
             $newUser                  = new usuario();
-            $newUser->name            = $user->name;
+            $newUser->nome            = $user->name;
             $newUser->email           = $user->email;
-            $newUser->google_id       = $user->id;
-            $newUser->avatar          = $user->avatar;
-            $newUser->avatar_original = $user->avatar_original;
+            //$newUser->google_id       = $user->id;
             $newUser->save();
-            auth()->login($newUser, true);
         }
+        $tipo_usuario = Usuario::where('email',$user->email)->pluck('tipo')->first();
+        Session::put('tipo_usuario',$tipo_usuario);
+        $id_usuario = Usuario::where('email',$user->email)->pluck('id_usuario')->first();
+        Session::put('id_usuario',$id_usuario);
+        $user = Usuario::find($id_usuario);
+        $user->ultimo_login = date('d-m-Y');
+        $user->save();
         return redirect()->to('/home');
     }
 }
