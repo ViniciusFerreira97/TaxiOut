@@ -1,9 +1,10 @@
 <?php echo $__env->make('layouts.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<meta name="google-site-verification" content="cGuR1sDmtt_NPoRw89WZh7H8Ag65aU-EPmWqCOTN4r4" />
 <link href="<?php echo e(asset('css/user/login.css')); ?>" rel="stylesheet" type="text/css">
 
 <div class="row" id="login">
     <div class="col-7 loginMenu">
-        <img src="/img/taxiOutIndex1.png" id="imgLogin">
+        <img src="img/taxiOutIndex1.png" id="imgLogin">
     </div>
 
     <div class="col-5 inputs">
@@ -33,10 +34,10 @@
             <div class="row">
                 <div class="col-2"></div>
                 <div class="col">
-                    <img src="/img/taxiPng.png" id="miniTaxiInicial">
+                    <img src="img/taxiPng.png" id="miniTaxiInicial">
                 </div>
             </div>
-            <div class="row margin1">
+            <div class="row">
                 <div class="col-2"></div>
                 <div class="col-8">
                     <h2 class="font-weight-bold">Taxista ou Cliente, venha viajar pelo mundo agora.</h2>
@@ -53,6 +54,14 @@
                     </div>
                 </div>
             </div>
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-8">
+                        <a href="<?php echo e(url('/google')); ?>" class="btn btn-lg btn-danger btn-block">
+                            <strong>Entrar com o Google</strong>
+                        </a>
+                    </div>
+                </div>
         </form>
 
         <form class="to-Hide" id="containerInscrever">
@@ -133,5 +142,5 @@
     </div>
 </div>
 <?php echo $__env->make('layouts.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-<script type="text/javascript" src="/js/login.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
 <?php /**PATH C:\Users\Vinicius\Desktop\TaxiLotacao\TaxiOut\resources\views/user/login.blade.php ENDPATH**/ ?>

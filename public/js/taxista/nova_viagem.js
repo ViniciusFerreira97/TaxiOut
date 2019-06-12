@@ -422,12 +422,7 @@ $(document).ready(function () {
             success: function (result) {
                 if (!result['success']) {
                     $('#modalError .modal-body').empty();
-                    let tohtml = '';
-                    for (var i in result['data']) {
-                        tohtml += result['data'][i] + '<br>';
-                    }
-                    $('#modalError .modal-body').html(tohtml);
-                    $('#modalError .modal-title').html('Cadastrar Viagem');
+                    $('#modalError .modal-body').html("Gentileza Cadastrar Automóvel");
                     $('#modalError').modal('show');
                 } else {
                     for(var i = 0; i < markers.length; i++) {

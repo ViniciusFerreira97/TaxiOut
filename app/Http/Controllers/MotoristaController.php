@@ -65,6 +65,12 @@ class MotoristaController extends Controller
     }
 
     public function cadastrarViagem(Request $request){
+        $veiculoCriado = veiculo::where('id_motorista','=',Session::get('id_usuario'))->count();
+        if($veiculoCriado < 1)
+        {
+            $return['success'] = false;
+            return $return;
+        }
         $viagem = new viagem();
         $viagem->tarifa = $request->preco;
         $viagem->capacidade = $request->capacidade;

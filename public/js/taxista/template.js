@@ -7,7 +7,7 @@ $(document).ready(function () {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    $('#btnModalVeiculo').on('click',function(){
+    $('#btnAlterarVeiculo').on('click',function(){
        $('#inserirVeiculo').modal('show');
     });
 
@@ -67,6 +67,7 @@ $(document).ready(function () {
                     $('#modalSuccess .modal-body').html('Dados alterados/salvos com sucesso !');
                     $('#modalSuccess .modal-title').html('Alterar dados do veiculo');
                     $('#modalSuccess').modal('show');
+                    $('#inserirVeiculo').modal('hide');
                 }
             }
         });
