@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\usuario;
+use Socialite;
 
 class GoogleController extends Controller
 {
