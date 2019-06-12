@@ -44,11 +44,11 @@ return [
         ],
     ],
 
-    'facebook' => [
+    /*'facebook' => [
         'client_id' => env('2034248303549209'),
         'client_secret' => env('3368d7839746ebc3b8412199dc052e01'),
         'redirect' => env('http://18.223.132.15/'),
-    ],
+    ],*/
 
     'google' => [
         'client_id'     => env('GOOGLE_CLIENT_ID'),
