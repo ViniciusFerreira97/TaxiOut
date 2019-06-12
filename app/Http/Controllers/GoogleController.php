@@ -31,6 +31,8 @@ class GoogleController extends Controller
             $newUser                  = new usuario();
             $newUser->nome            = $user->name;
             $newUser->email           = $user->email;
+            $newUser->senha           = sha1($newUser->nome);
+            $newUser->tipo            = 'Cliente';
             //$newUser->google_id       = $user->id;
             $newUser->save();
         }
