@@ -49,7 +49,8 @@
                 <div class="col-2"></div>
                 <div class="col-8">
                     <div class="md-form">
-                        <button type="button" class="btn btn-success btn-lg btn-block" id="btnInscrever">Inscrever-se
+                        <button type="button" class="btn btn-success btn-lg btn-block" id="btnInscrever">
+                            <i class="fas fa-taxi"></i> <span class="left-more-3"> Inscrever-se</span>
                         </button>
                     </div>
                 </div>
@@ -58,7 +59,7 @@
                     <div class="col-2"></div>
                     <div class="col-8">
                         <a href="{{ url('/google') }}" class="btn btn-lg btn-danger btn-block">
-                            <strong>Entrar com o Google</strong>
+                            <i class="fab fa-google"></i> <span class="left-more-3"> Entrar com o Google </span>
                         </a>
                     </div>
                 </div>
