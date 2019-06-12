@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\usuario;
 use Socialite;
 use App\Http\Controllers\UserController;
+use Session;
 
 class GoogleController extends Controller
 {
