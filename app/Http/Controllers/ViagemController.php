@@ -5,6 +5,7 @@ use App\viagem;
 use App\ponto_rota;
 use App\nome_ponto;
 use App\usuario_viagem;
+use Mockery\Exception;
 use Session;
 use Carbon\Carbon;
 use DB;
@@ -40,9 +41,13 @@ class ViagemController extends Controller
         $cont = 0;
         foreach ($viagens as $viagem){
             if(isset($mes)){
-                $data = new Carbon($viagem->data);
-                if($data < Carbon::now()->subMonth(6))
-                    continue;
+                try{
+                    $data = new Carbon($viagem->data);
+                    if($data < Carbon::now()->subMonth(6))
+                        continue;
+                }catch (\Exception $e){
+                    
+                }
             }
             $return['data'][$cont]['id'] = $viagem->id_viagem;
             $return['data'][$cont]['tarifa'] = $viagem->tarifa;
