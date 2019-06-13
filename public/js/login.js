@@ -10,9 +10,15 @@ $(document).ready(function () {
     var height = $(window).height();
     var width = $(window).width();
     if (width < 840) {
-        $('.loginMenu').removeClass('col-5').addClass('col-10');
-        $('.loginItens').removeClass('col-5').addClass('col-10');
-
+        $("#imgLogin").attr("src","img/navbar.png");
+        $('.loginMenu').removeClass('col-5').addClass('col-12');
+        $('div.inputs').removeClass('col-5').addClass('col-12');
+        $('div.inputs').css('min-width','100%');
+        $('div.inputs').css('min-height','40%');
+        $('div,inputs').addClass('text-center');
+        //$('div.inputs').css('margin-left','40%');
+        $('body').css('overflow-y','scroll');
+        $('body').css('overflow-x','hidden');
     } else {
         $('#imgLogin').css('height', height);
         $('#imgLogin').css('width', (divWidth) + 'px');

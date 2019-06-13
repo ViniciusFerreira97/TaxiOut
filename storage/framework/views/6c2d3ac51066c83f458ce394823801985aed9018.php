@@ -30,7 +30,7 @@
             </div>
         </form>
         <hr>
-        <form id="ContainerFormInicial">
+        <form id="ContainerFormInicial" class="row">
             <div class="row">
                 <div class="col-2"></div>
                 <div class="col">
@@ -65,7 +65,7 @@
                 </div>
         </form>
 
-        <form class="to-Hide" id="containerInscrever">
+        <form class="toHide" id="containerInscrever">
             <div class="row text-center">
                 <div class="col">
                     <h1>Inscrever-se</h1>
