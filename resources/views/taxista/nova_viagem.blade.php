@@ -1,7 +1,6 @@
 <link href="/css/taxista/nova_viagem.css" rel="stylesheet">
 <section class="view" id="novaViagemView">
     <div class="row top-more-2 titleSection">
-        <div class="col-4"></div>
         <div class="col">
             <h2>Agendamento de viagem</h2>
         </div>
