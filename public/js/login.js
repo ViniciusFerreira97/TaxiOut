@@ -13,8 +13,7 @@ $(document).ready(function () {
         $("#imgLogin").attr("src","img/navbar.png");
         $('.loginMenu').removeClass('col-5').addClass('col-12');
         $('div.inputs').removeClass('col-5').addClass('col-12');
-        $('div.inputs').css('min-width','100%');
-        $('div.inputs').css('min-height','40%');
+        $('#imgLogin').css('width','100%');
         $('div,inputs').addClass('text-center');
         //$('div.inputs').css('margin-left','40%');
         $('body').css('overflow-y','scroll');
