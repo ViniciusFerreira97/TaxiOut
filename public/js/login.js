@@ -10,7 +10,7 @@ $(document).ready(function () {
     var height = $(window).height();
     var width = $(window).width();
     if (width < 840) {
-        $("#imgLogin").attr("src","img/navbar.png");
+        $("#imgLogin").remove();
         $('.loginMenu').removeClass('col-5').addClass('col-12');
         $('div.inputs').removeClass('col-5').addClass('col-12');
         $('#imgLogin').css('width','100%');

@@ -31,4 +31,6 @@ $(document).ready(function () {
         $('#'+ $(this).attr('id') +' i').addClass('active');
         $('#' + id).show('slide');
     });
+
+    $('.titleSection').addClass('text-center');
 });

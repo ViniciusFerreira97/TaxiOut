@@ -8,7 +8,6 @@ $(document).ready(function () {
     var lineShape = [];
     var polygonShape = [];
     var bounds = new google.maps.LatLngBounds();
-
     initializeProcurarViagem();
     function initializeProcurarViagem(){
         $.ajax({

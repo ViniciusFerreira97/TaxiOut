@@ -34,7 +34,7 @@ $(document).ready(function () {
         new google.maps.Point(0, 0),
         new google.maps.Point(6, 6)
     );
-
+    var mapHeight = 1.5;
     function addOverlayFromKML() {
         for (var i = 0; i < 1; i++) {
             lineShape[i] = new google.maps.Polyline({
@@ -51,11 +51,6 @@ $(document).ready(function () {
                 strokeWeight: lineWeight,
                 fillColor: fillColor
             });
-            /*google.maps.event.addListener(polygonShape[i], 'click', function (point) {
-                infowindow.setContent(description[cur]);
-                infowindow.setPosition(point.latLng);
-                infowindow.open(map);
-            });*/
         }
         polyShape = lineShape[0];
         latpath = [];
@@ -251,9 +246,6 @@ $(document).ready(function () {
         }
     }
 
-
-    initializeNovaViagem();
-
     function initializeNovaViagem() {
         var today = new Date();
         var dd = String(today.getDate()).padStart(2, '0');
@@ -274,173 +266,193 @@ $(document).ready(function () {
     }
 
     function initMap() {
-        $('#map').css('min-height', $(window).height() / 1.5);
+        $('#map').css('min-height', $(window).height()/mapHeight);
         map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: -19.9189954, lng: -43.9386306},
             zoom: 14
         });
         tmpPolyLine.setMap(map);
     }
-
-    $('#controlCamposInicial').on('click', function () {
-        $('#camposPontoFinal').hide('slide');
-        $('#camposPontoInicial').toggle('slide');
-        $('#iControlInicial').toggleClass('fa-angle-right').toggleClass('fa-angle-down');
-        $('#iControlFinal').addClass('fa-angle-right').removeClass('fa-angle-down');
-        $('#controlCamposInicial').toggleClass('text-success');
-        $('#controlCamposFinal').removeClass('text-success');
-    });
+    function rollButtons(){
 
 
-    $('#controlCamposFinal').on('click', function () {
-        $('#camposPontoInicial').hide('slide');
-        $('#camposPontoFinal').toggle('slide');
-        $('#iControlFinal').toggleClass('fa-angle-right').toggleClass('fa-angle-down');
-        $('#iControlInicial').addClass('fa-angle-right').removeClass('fa-angle-down');
-        $('#controlCamposInicial').removeClass('text-success');
-        $('#controlCamposFinal').toggleClass('text-success');
-    });
+        $('#controlCamposInicial').on('click', function () {
+            $('#camposPontoFinal').hide('slide');
+            $('#camposPontoInicial').toggle('slide');
+            $('#iControlInicial').toggleClass('fa-angle-right').toggleClass('fa-angle-down');
+            $('#iControlFinal').addClass('fa-angle-right').removeClass('fa-angle-down');
+            $('#controlCamposInicial').toggleClass('text-success');
+            $('#controlCamposFinal').removeClass('text-success');
+        });
 
-    $('#btnEncontrarEnderecos').on('click', function () {
-        let logOrigem = $('#logradouroInicial').val();
-        let baiOrigem = $('#bairroInicial').val();
-        let numOrigem = $('#numeroInicial').val();
-        let cepOrigem = $('#cepInicial').val();
-        let cidOrigem = $('#cidadeInicial').val();
-        let ufOrigem = $('#ufInicial').val();
-        let logDestino = $('#logradouroFinal').val();
-        let baiDestino = $('#bairroFinal').val();
-        let numDestino = $('#numeroFinal').val();
-        let cepDestino = $('#cepFinal').val();
-        let cidDestino = $('#cidadeFinal').val();
-        let ufDestino = $('#ufFinal').val();
-        let enderecoOrigem = logOrigem + ',' + numOrigem + ',' + baiOrigem + ',' + cepOrigem + ',' + cidOrigem + ',' + ufOrigem;
-        var geocoder = new google.maps.Geocoder();
-        if (enderecoOrigem != '')
-            geocoder.geocode({'address': enderecoOrigem}, function (results, status) {
-                if (status == google.maps.GeocoderStatus.OK) {
-                    latlong = String(results[0].geometry.location).replace('(', '').replace(')', '');
-                    latOrigem = latlong.split(',')[0];
-                    longOrigem = latlong.split(',')[1];
-                    map.setCenter(results[0].geometry.location);
-                    var markerOrigem = new google.maps.Marker({
-                        map: map,
-                        position: results[0].geometry.location,
-                        icon: '/img/marcadorOrigemAlternativo.png',
-                        title: 'Ponto de saida',
-                        animation: google.maps.Animation.DROP,
-                    });
-                    markers.push(markerOrigem);
-                    latpath[0] = [];
-                    latpath[0].push(new google.maps.LatLng(latOrigem, longOrigem))
-                    firstLats[0] = latOrigem+','+longOrigem;
-                    let enderecoDestino = logDestino + ',' + numDestino + ',' + baiDestino + ',' + cepDestino + ',' + cidDestino + ',' + ufDestino;
-                    if (enderecoDestino != '')
-                        geocoder.geocode({'address': enderecoDestino}, function (results, status) {
-                            if (status == google.maps.GeocoderStatus.OK) {
-                                latlong = String(results[0].geometry.location).replace('(', '').replace(')', '');
-                                latDestino = latlong.split(',')[0];
-                                longDestino = latlong.split(',')[1];
-                                map.setCenter(results[0].geometry.location);
-                                var markerDestino = new google.maps.Marker({
-                                    map: map,
-                                    position: results[0].geometry.location,
-                                    icon: '/img/marcadorDestino.png',
-                                    title: 'Ponto de chegada',
-                                    animation: google.maps.Animation.DROP,
-                                });
-                                markers.push(markerDestino);
-                                latpath[0].push(new google.maps.LatLng(latDestino, longDestino));
-                                firstLats[1] = latDestino+','+longDestino;
-                                for (var i = 0; i < markers.length; i++) {
-                                    bounds.extend(markers[i].getPosition());
-                                }
-                                map.fitBounds(bounds);
-                                addOverlayFromKML();
-                            }
+
+        $('#controlCamposFinal').on('click', function () {
+            $('#camposPontoInicial').hide('slide');
+            $('#camposPontoFinal').toggle('slide');
+            $('#iControlFinal').toggleClass('fa-angle-right').toggleClass('fa-angle-down');
+            $('#iControlInicial').addClass('fa-angle-right').removeClass('fa-angle-down');
+            $('#controlCamposInicial').removeClass('text-success');
+            $('#controlCamposFinal').toggleClass('text-success');
+        });
+
+        $('#btnEncontrarEnderecos').on('click', function () {
+            let logOrigem = $('#logradouroInicial').val();
+            let baiOrigem = $('#bairroInicial').val();
+            let numOrigem = $('#numeroInicial').val();
+            let cepOrigem = $('#cepInicial').val();
+            let cidOrigem = $('#cidadeInicial').val();
+            let ufOrigem = $('#ufInicial').val();
+            let logDestino = $('#logradouroFinal').val();
+            let baiDestino = $('#bairroFinal').val();
+            let numDestino = $('#numeroFinal').val();
+            let cepDestino = $('#cepFinal').val();
+            let cidDestino = $('#cidadeFinal').val();
+            let ufDestino = $('#ufFinal').val();
+            let enderecoOrigem = logOrigem + ',' + numOrigem + ',' + baiOrigem + ',' + cepOrigem + ',' + cidOrigem + ',' + ufOrigem;
+            var geocoder = new google.maps.Geocoder();
+            if (enderecoOrigem != '')
+                geocoder.geocode({'address': enderecoOrigem}, function (results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        latlong = String(results[0].geometry.location).replace('(', '').replace(')', '');
+                        latOrigem = latlong.split(',')[0];
+                        longOrigem = latlong.split(',')[1];
+                        map.setCenter(results[0].geometry.location);
+                        var markerOrigem = new google.maps.Marker({
+                            map: map,
+                            position: results[0].geometry.location,
+                            icon: '/img/marcadorOrigemAlternativo.png',
+                            title: 'Ponto de saida',
+                            animation: google.maps.Animation.DROP,
                         });
+                        markers.push(markerOrigem);
+                        latpath[0] = [];
+                        latpath[0].push(new google.maps.LatLng(latOrigem, longOrigem))
+                        firstLats[0] = latOrigem+','+longOrigem;
+                        let enderecoDestino = logDestino + ',' + numDestino + ',' + baiDestino + ',' + cepDestino + ',' + cidDestino + ',' + ufDestino;
+                        if (enderecoDestino != '')
+                            geocoder.geocode({'address': enderecoDestino}, function (results, status) {
+                                if (status == google.maps.GeocoderStatus.OK) {
+                                    latlong = String(results[0].geometry.location).replace('(', '').replace(')', '');
+                                    latDestino = latlong.split(',')[0];
+                                    longDestino = latlong.split(',')[1];
+                                    map.setCenter(results[0].geometry.location);
+                                    var markerDestino = new google.maps.Marker({
+                                        map: map,
+                                        position: results[0].geometry.location,
+                                        icon: '/img/marcadorDestino.png',
+                                        title: 'Ponto de chegada',
+                                        animation: google.maps.Animation.DROP,
+                                    });
+                                    markers.push(markerDestino);
+                                    latpath[0].push(new google.maps.LatLng(latDestino, longDestino));
+                                    firstLats[1] = latDestino+','+longDestino;
+                                    for (var i = 0; i < markers.length; i++) {
+                                        bounds.extend(markers[i].getPosition());
+                                    }
+                                    map.fitBounds(bounds);
+                                    addOverlayFromKML();
+                                }
+                            });
+                    }
+                });
+            $(this).fadeOut();
+            $('.viagemMenu').show('slide');
+            $('#dataCriarViagem').focus();
+            $('#horarioCriarViagem').focus();
+        });
+
+        $('#btnAgendarViagem').on('click', function () {
+            let latLongs = {};
+            latLongs[0] = {};
+            latLongs[0]['lat'] = firstLats[0].split(',')[0];
+            latLongs[0]['long'] = firstLats[0].split(',')[1];
+            for (var i = 0; i < pointsArrayKml.length; i++){
+                latLongs[i+1] = {};
+                latLongs[i+1]['lat'] = pointsArrayKml[i].split(',')[1];
+                latLongs[i+1]['long'] = pointsArrayKml[i].split(',')[0];
+            }
+            let count = pointsArrayKml.length+1;
+            latLongs[count] = {};
+            latLongs[count]['lat'] = firstLats[1].split(',')[0];
+            latLongs[count]['long'] = firstLats[1].split(',')[1];
+            let logOrigem = $('#logradouroInicial').val();
+            let baiOrigem = $('#bairroInicial').val();
+            let numOrigem = $('#numeroInicial').val();
+            let cepOrigem = $('#cepInicial').val();
+            let cidOrigem = $('#cidadeInicial').val();
+            let ufOrigem = $('#ufInicial').val();
+            let logDestino = $('#logradouroFinal').val();
+            let baiDestino = $('#bairroFinal').val();
+            let numDestino = $('#numeroFinal').val();
+            let cepDestino = $('#cepFinal').val();
+            let cidDestino = $('#cidadeFinal').val();
+            let ufDestino = $('#ufFinal').val();
+            let preco = $('#precoCriarViagem').val();
+            let capacidade = $('#capacidadeCriarViagem').val();
+            let horario = $('#horarioCriarViagem').val();
+            let data = $('#dataCriarViagem').val();
+            $.ajax({
+                url: "/motoristas/viagens",
+                type: "POST",
+                data: {
+                    origemLogradouro: logOrigem,
+                    origemBairro: baiOrigem,
+                    origemNumero: numOrigem,
+                    origemCep: cepOrigem,
+                    origemCidade: cidOrigem,
+                    origemUf: ufOrigem,
+                    destinoLogradouro: logDestino,
+                    destinoBairro: baiDestino,
+                    destinoNumero: numDestino,
+                    destinoCep: cepDestino,
+                    destinoCidade: cidDestino,
+                    destinoUf: ufDestino,
+                    coords: JSON.stringify(latLongs),
+                    preco: preco,
+                    capacidade: capacidade,
+                    hora: horario,
+                    data: data,
+                },
+                success: function (result) {
+                    if (!result['success']) {
+                        $('#modalError .modal-body').empty();
+                        $('#modalError .modal-body').html("Gentileza Cadastrar Automóvel");
+                        $('#modalError').modal('show');
+                    } else {
+                        for(var i = 0; i < markers.length; i++) {
+                            markers[i].setMap(null);
+                        }
+                        for(var i = 0; i < midmarkers.length; i++) {
+                            midmarkers[i].setMap(null);
+                        }
+                        lineShape[0].setMap(null);
+                        markers = [];
+                        midmarkers = [];
+                        pointsArrayKml = [];
+                        $('#modalSuccess .modal-body').html('Viagem cadastrada com sucesso !');
+                        $('#modalSuccess').modal('show');
+                        $('.viagemMenu').hide('slide');
+                        $('#btnEncontrarEnderecos').fadeIn();
+                    }
                 }
             });
-        $(this).fadeOut();
-        $('.viagemMenu').show('slide');
-        $('#dataCriarViagem').focus();
-        $('#horarioCriarViagem').focus();
-    });
-
-    $('#btnAgendarViagem').on('click', function () {
-        let latLongs = {};
-        latLongs[0] = {};
-        latLongs[0]['lat'] = firstLats[0].split(',')[0];
-        latLongs[0]['long'] = firstLats[0].split(',')[1];
-        for (var i = 0; i < pointsArrayKml.length; i++){
-            latLongs[i+1] = {};
-            latLongs[i+1]['lat'] = pointsArrayKml[i].split(',')[1];
-            latLongs[i+1]['long'] = pointsArrayKml[i].split(',')[0];
-        }
-        let count = pointsArrayKml.length+1;
-        latLongs[count] = {};
-        latLongs[count]['lat'] = firstLats[1].split(',')[0];
-        latLongs[count]['long'] = firstLats[1].split(',')[1];
-        let logOrigem = $('#logradouroInicial').val();
-        let baiOrigem = $('#bairroInicial').val();
-        let numOrigem = $('#numeroInicial').val();
-        let cepOrigem = $('#cepInicial').val();
-        let cidOrigem = $('#cidadeInicial').val();
-        let ufOrigem = $('#ufInicial').val();
-        let logDestino = $('#logradouroFinal').val();
-        let baiDestino = $('#bairroFinal').val();
-        let numDestino = $('#numeroFinal').val();
-        let cepDestino = $('#cepFinal').val();
-        let cidDestino = $('#cidadeFinal').val();
-        let ufDestino = $('#ufFinal').val();
-        let preco = $('#precoCriarViagem').val();
-        let capacidade = $('#capacidadeCriarViagem').val();
-        let horario = $('#horarioCriarViagem').val();
-        let data = $('#dataCriarViagem').val();
-        $.ajax({
-            url: "/motoristas/viagens",
-            type: "POST",
-            data: {
-                origemLogradouro: logOrigem,
-                origemBairro: baiOrigem,
-                origemNumero: numOrigem,
-                origemCep: cepOrigem,
-                origemCidade: cidOrigem,
-                origemUf: ufOrigem,
-                destinoLogradouro: logDestino,
-                destinoBairro: baiDestino,
-                destinoNumero: numDestino,
-                destinoCep: cepDestino,
-                destinoCidade: cidDestino,
-                destinoUf: ufDestino,
-                coords: JSON.stringify(latLongs),
-                preco: preco,
-                capacidade: capacidade,
-                hora: horario,
-                data: data,
-            },
-            success: function (result) {
-                if (!result['success']) {
-                    $('#modalError .modal-body').empty();
-                    $('#modalError .modal-body').html("Gentileza Cadastrar Automóvel");
-                    $('#modalError').modal('show');
-                } else {
-                    for(var i = 0; i < markers.length; i++) {
-                        markers[i].setMap(null);
-                    }
-                    for(var i = 0; i < midmarkers.length; i++) {
-                        midmarkers[i].setMap(null);
-                    }
-                    lineShape[0].setMap(null);
-                    markers = [];
-                    midmarkers = [];
-                    pointsArrayKml = [];
-                    $('#modalSuccess .modal-body').html('Viagem cadastrada com sucesso !');
-                    $('#modalSuccess').modal('show');
-                    $('.viagemMenu').hide('slide');
-                    $('#btnEncontrarEnderecos').fadeIn();
-                }
-            }
         });
-    });
+
+    }
+
+
+    var height = $(window).height();
+    var width = $(window).width();
+    if (width < 840) {
+        mapHeight = 2;
+        $('#itemsPC').empty();
+        $('#mapDiv').addClass('col-11');
+        $('#myMapDiv').removeClass('toHide');
+        $('#myMapDiv').show();
+        rollButtons();
+        initializeNovaViagem();
+    }else{
+        rollButtons();
+        initializeNovaViagem();
+    }
 });

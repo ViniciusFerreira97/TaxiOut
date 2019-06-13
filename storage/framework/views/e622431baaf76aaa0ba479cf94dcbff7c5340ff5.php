@@ -1,7 +1,6 @@
 <link href="/css/cliente/procurar_viagem.css" rel="stylesheet">
 <section class="view" id="procurarViagemView">
-    <div class="row top-more-2">
-        <div class="col-4"></div>
+    <div class="row top-more-2 titleSection">
         <div class="col">
             <h2>Procurar Viagem</h2>
         </div>

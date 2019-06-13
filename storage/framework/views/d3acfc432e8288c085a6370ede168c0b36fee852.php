@@ -1,8 +1,14 @@
 <link href="/css/taxista/estatisticas.css" rel="stylesheet">
 <section class="view toHide" id="estatisticasTaxView">
-    <div class="row top-more-2 text-center">
+    <div class="row top-more-2 titleSection">
         <div class="col">
             <h2>Estatisticas</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10">
+            <hr class="especial">
         </div>
     </div>
     <div class="row top-more-2">
@@ -23,20 +29,24 @@
         </div>
     </div>
     <div class="row top-more-2 left-more-1">
-        <table class="table table-hover " id="tableRealizadasTax">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Taxista</th>
-                <th scope="col">Data</th>
-                <th scope="col">Origem</th>
-                <th scope="col">Destino</th>
-                <th scope="col">Tarifa</th>
-            </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
+        <div class="col">
+            <div class="scrollTable">
+                <table class="table table-hover " id="tableRealizadasTax">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Taxista</th>
+                        <th scope="col">Data</th>
+                        <th scope="col">Origem</th>
+                        <th scope="col">Destino</th>
+                        <th scope="col">Tarifa</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </section>
 
