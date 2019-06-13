@@ -30,7 +30,7 @@
             </div>
         </form>
         <hr>
-        <form id="ContainerFormInicial" class="row">
+        <form id="ContainerFormInicial">
             <div class="row">
                 <div class="col-2"></div>
                 <div class="col">
